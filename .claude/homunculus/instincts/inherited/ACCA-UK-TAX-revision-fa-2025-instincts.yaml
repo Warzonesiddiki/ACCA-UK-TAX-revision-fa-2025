@@ -1,0 +1,348 @@
+# Instincts generated from https://github.com/Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+# Generated: 2026-07-31T21:10:25.581Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: ACCA-UK-TAX-revision-fa-2025-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# ACCA UK TAX Revision Fa 2025 Commit Length
+
+## Action
+
+Write moderate-length commit messages (~82 characters)
+
+## Evidence
+
+- Average commit message length: 82 chars
+- Based on 3 commits
+
+---
+id: ACCA-UK-TAX-revision-fa-2025-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# ACCA UK TAX Revision Fa 2025 Naming Files
+
+## Action
+
+Use snake_case naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: snake_case
+
+---
+id: ACCA-UK-TAX-revision-fa-2025-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# ACCA UK TAX Revision Fa 2025 Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: ACCA-UK-TAX-revision-fa-2025-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# ACCA UK TAX Revision Fa 2025 Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: ACCA-UK-TAX-revision-fa-2025-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# ACCA UK TAX Revision Fa 2025 Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: ACCA-UK-TAX-revision-fa-2025-workflow-revision-pack-generation-and-polishing
+trigger: "when doing revision pack generation and polishing"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# ACCA UK TAX Revision Fa 2025 Workflow Revision Pack Generation And Polishing
+
+## Action
+
+Follow the revision-pack-generation-and-polishing workflow:
+1. Run Python scripts to generate or expand revision pack sessions or parts.
+2. Polish and enhance the generated pack (e.g., add JS search, rich content) using dedicated Python scripts.
+3. Update the main HTML output file with the new or improved content.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: TX-UK_Revision_Pack.html, generate_session_*.py, expand_*.py
+
+---
+id: ACCA-UK-TAX-revision-fa-2025-workflow-audit-and-fix-application
+trigger: "when doing audit and fix application"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# ACCA UK TAX Revision Fa 2025 Workflow Audit And Fix Application
+
+## Action
+
+Follow the audit-and-fix-application workflow:
+1. Run audit or verification scripts to identify issues.
+2. Apply fixes via dedicated Python scripts (e.g., patch application, formula fixes, content additions).
+3. Update the main HTML output file to reflect the applied fixes.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: TX-UK_Revision_Pack.html, apply_fix_patches.py, fix_*.py
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-file-naming
+trigger: "When creating or renaming a Python file"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct File Naming
+
+## Action
+
+Use snake_case for file names
+
+## Evidence
+
+- Pattern in namingConventions.files: snake_case
+- Observed in files: generate_session_*.py, expand_*.py, build_polished_master_pack.py
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-function-naming
+trigger: "When defining a new Python function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct Function Naming
+
+## Action
+
+Use camelCase for function names
+
+## Evidence
+
+- Pattern in namingConventions.functions: camelCase
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-class-naming
+trigger: "When defining a new Python class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct Class Naming
+
+## Action
+
+Use PascalCase for class names
+
+## Evidence
+
+- Pattern in namingConventions.classes: PascalCase
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-constant-naming
+trigger: "When defining a constant in Python"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct Constant Naming
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names
+
+## Evidence
+
+- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-import-style
+trigger: "When importing modules in Python"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct Import Style
+
+## Action
+
+Use relative imports
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-export-style
+trigger: "When exporting functions or classes from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct Export Style
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-test-location
+trigger: "When adding or updating tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct Test Location
+
+## Action
+
+Place test files in a separate location from source code
+
+## Evidence
+
+- Pattern in architecture.testLocation: separate
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-commit-format
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct Commit Format
+
+## Action
+
+Use freeform commit messages without a required prefix
+
+## Evidence
+
+- Pattern in commits.type: freeform
+- Examples: 'Build complete 100-Part ACCA TX-UK FA2025 Revision Pack'
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-revision-pack-generation
+trigger: "When someone wants to build or update the full revision pack with new or improved content"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct Revision Pack Generation
+
+## Action
+
+Run Python scripts to generate or expand revision pack sessions or parts, polish and enhance the pack, then update the main HTML output file
+
+## Evidence
+
+- Workflow: revision-pack-generation-and-polishing
+- Observed commit sequence and files: generate_session_*.py, expand_*.py, build_polished_master_pack.py, TX-UK_Revision_Pack.html
+
+---
+id: acca-uk-tax-revision-fa-2025-instinct-audit-fix-application
+trigger: "When someone needs to address audit findings or apply targeted fixes to the revision pack"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: Warzonesiddiki/ACCA-UK-TAX-revision-fa-2025
+---
+
+# Acca Uk Tax Revision Fa 2025 Instinct Audit Fix Application
+
+## Action
+
+Run audit or verification scripts, apply fixes via dedicated Python scripts, then update the main HTML output file
+
+## Evidence
+
+- Workflow: audit-and-fix-application
+- Observed commit sequence and files: apply_fix_patches.py, fix_*.py, add_*.py, full_audit.py, run_forensic_audit.py, verify_all_passes.py, TX-UK_Revision_Pack.html
+

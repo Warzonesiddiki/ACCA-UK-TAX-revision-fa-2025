@@ -1,0 +1,248 @@
+{
+ "1": {
+  "headers": [
+   "Taxable",
+   "Exempt"
+  ],
+  "grid": [
+   {
+    "row": "NS&I investment account interest",
+    "col": 0
+   },
+   {
+    "row": "£500 purchasing a NS&I certificate",
+    "col": 1
+   },
+   {
+    "row": "£800 in a NS&I investment account",
+    "col": 0
+   },
+   {
+    "row": "£1,000 in an Individual Savings Account",
+    "col": 1
+   },
+   {
+    "row": "£400 in shares in the company he works for",
+    "col": 0
+   }
+  ]
+ },
+ "2": {
+  "headers": [
+   "Taxable",
+   "Exempt"
+  ],
+  "grid": [
+   {
+    "row": "NS&I savings certificate interest",
+    "col": 1
+   },
+   {
+    "row": "Gilt edged security interest",
+    "col": 0
+   },
+   {
+    "row": "NS&I investment account interest",
+    "col": 0
+   },
+   {
+    "row": "£800 in a NS&I investment account",
+    "col": 0
+   }
+  ]
+ },
+ "7": {
+  "headers": [
+   "Satisfies",
+   "Does"
+  ],
+  "grid": [
+   {
+    "row": "Fran",
+    "col": 1
+   },
+   {
+    "row": "Eric",
+    "col": 0
+   }
+  ]
+ },
+ "70": {
+  "headers": [
+   "Capital",
+   "Revenue",
+   "Neither"
+  ],
+  "grid": [
+   {
+    "row": "National insurance contributions",
+    "col": 1
+   },
+   {
+    "row": "Inheritance tax",
+    "col": 0
+   },
+   {
+    "row": "Value added tax",
+    "col": 2
+   }
+  ]
+ },
+ "163": {
+  "headers": [
+   "Since",
+   "Bo’s"
+  ],
+  "grid": [
+   {
+    "row": "The base cost of the shares for Chi would be £210,000",
+    "col": 1
+   },
+   {
+    "row": "Bo’s chargeable gain would have been £66,000",
+    "col": 1
+   }
+  ]
+ },
+ "167": {
+  "headers": [
+   "Company",
+   "Size",
+   "Holding"
+  ],
+  "grid": [
+   {
+    "row": "Major plc",
+    "col": 1
+   },
+   {
+    "row": "Minor Ltd",
+    "col": 2
+   }
+  ]
+ },
+ "170": {
+  "headers": [
+   "True",
+   "False"
+  ],
+  "grid": [
+   {
+    "row": "Jerome must have owned the shares for at least two years",
+    "col": 1
+   },
+   {
+    "row": "The company must be a trading company",
+    "col": 0
+   },
+   {
+    "row": "The company must not own any non-business assets",
+    "col": 1
+   },
+   {
+    "row": "The company must be an unquoted company",
+    "col": 1
+   }
+  ]
+ },
+ "198": {
+  "headers": [
+   "True",
+   "False"
+  ],
+  "grid": [
+   {
+    "row": "taper relief will reduce the amount of the gift chargeable to",
+    "col": 1
+   },
+   {
+    "row": "lifetime is that the increase in value up to the date of death will",
+    "col": 0
+   }
+  ]
+ },
+ "231": {
+  "headers": [
+   "True",
+   "False"
+  ],
+  "grid": [
+   {
+    "row": "The trading loss may not be offset against chargeable gains",
+    "col": 1
+   }
+  ]
+ },
+ "254": {
+  "headers": [
+   "Relevant",
+   "Not"
+  ],
+  "grid": [
+   {
+    "row": "Rate of corporation tax saved",
+    "col": 0
+   },
+   {
+    "row": "Extent to which QCD relief will be wasted",
+    "col": 0
+   },
+   {
+    "row": "Extent to which losses will be wasted",
+    "col": 0
+   },
+   {
+    "row": "Timing of relief",
+    "col": 0
+   }
+  ]
+ },
+ "285": {
+  "headers": [
+   "True",
+   "False"
+  ],
+  "grid": [
+   {
+    "row": "The date of the supply is not required on a simplified VAT invoice.",
+    "col": 1
+   }
+  ]
+ },
+ "294": {
+  "headers": [
+   "True",
+   "False"
+  ],
+  "grid": [
+   {
+    "row": "A late filing penalty will be charged for late registration",
+    "col": 1
+   }
+  ]
+ },
+ "299": {
+  "headers": [
+   "True",
+   "False"
+  ],
+  "grid": [
+   {
+    "row": "The usual VAT return and payment submission dates apply",
+    "col": 0
+   }
+  ]
+ },
+ "300": {
+  "headers": [
+   "True",
+   "False"
+  ],
+  "grid": [
+   {
+    "row": "Output VAT is only due in respect of standard-rated supplies.",
+    "col": 0
+   }
+  ]
+ }
+}

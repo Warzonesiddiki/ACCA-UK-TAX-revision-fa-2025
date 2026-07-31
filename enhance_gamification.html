@@ -1,0 +1,127 @@
+<section class="part-section" id="gamification-hub">
+  <div class="part-header">
+    <div class="part-kicker">ENTERTAINMENT • PROGRESS</div>
+    <h2 class="part-title">🎮 Study Hub — Badges, Progress & Quick Fire</h2>
+    <p class="part-subtitle">Track your progress, earn badges, and test yourself with the Quick Fire quiz.</p>
+  </div>
+
+  <div class="card">
+    <h3>🏅 BADGE COLLECTION</h3>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;" id="badge-collection">
+      <div class="badge-card" id="badge-hot_streak" style="padding:.75rem 1rem;background:var(--gold-pale);border:1px solid var(--line-strong);border-radius:6px;opacity:0.4">
+        <strong>🔥 Hot Streak</strong><br><span style="font-size:.8rem;color:var(--ink-faint);">5 correct in a row</span>
+      </div>
+      <div class="badge-card" id="badge-on_fire" style="padding:.75rem 1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;opacity:0.4">
+        <strong>🌋 On Fire</strong><br><span style="font-size:.8rem;color:var(--ink-faint);">10 correct in a row</span>
+      </div>
+      <div class="badge-card" id="badge-quiz_master" style="padding:.75rem 1rem;background:var(--green-pale);border:1px solid var(--line-strong);border-radius:6px;opacity:0.4">
+        <strong>🧠 Quiz Master</strong><br><span style="font-size:.8rem;color:var(--ink-faint);">20 correct answers</span>
+      </div>
+      <div class="badge-card" id="badge-exam_ready" style="padding:.75rem 1rem;background:var(--violet-pale);border:1px solid var(--line-strong);border-radius:6px;opacity:0.4">
+        <strong>⏱ Exam Ready</strong><br><span style="font-size:.8rem;color:var(--ink-faint);">80%+ on Quick Fire</span>
+      </div>
+      <div class="badge-card" id="badge-tax_titan" style="padding:.75rem 1rem;background:var(--blue-pale);border:1px solid var(--line-strong);border-radius:6px;opacity:0.4">
+        <strong>🏆 Tax Titan</strong><br><span style="font-size:.8rem;color:var(--ink-faint);">Complete all 100 parts</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📊 LIVE PROGRESS DASHBOARD</h3>
+    <p style="margin-bottom:1rem">Your real-time stats update as you complete questions and check them off.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+      <div style="padding:1rem;background:var(--paper-deep);border-radius:6px;text-align:center">
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-faint)">TOTAL XP</div>
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--green-deep)" id="dash-xp">0</div>
+      </div>
+      <div style="padding:1rem;background:var(--paper-deep);border-radius:6px;text-align:center">
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-faint)">RANK</div>
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--gold)" id="dash-rank">Cadet</div>
+      </div>
+      <div style="padding:1rem;background:var(--paper-deep);border-radius:6px;text-align:center">
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-faint)">BEST STREAK</div>
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--gold-bright)" id="dash-streak">0 🔥</div>
+      </div>
+      <div style="padding:1rem;background:var(--paper-deep);border-radius:6px;text-align:center">
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-faint)">QUIZ ACCURACY</div>
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--green-bright)" id="dash-accuracy">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>⚡ Quick Fire Quiz — 20 Random Questions</h3>
+    <p>Test your knowledge across all tax areas. Score 80%+ to unlock the <strong>Exam Ready</strong> badge!</p>
+    <button class="quickfire-btn" onclick="QUICK_FIRE.start()" style="font-size:1.1rem;padding:0.8rem 2rem;margin-top:1rem">
+      🚀 Start Quick Fire Quiz
+    </button>
+  </div>
+
+  <div class="card">
+    <h3>⚠️ 50 DEADLY TRAPS — Click to Reveal</h3>
+    <p>These are the most common mistakes flagged by ACCA examiners. Click each one to reveal the answer.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0.8rem;margin-top:1rem;">
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>1. PA taper when ANI &gt; £100,000?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--green-deep);font-weight:600">✓ YES — PA reduced by £1 per £2 above £100k. Zero PA at £125,140.</div>
+      </div>
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>2. Full Expensing for sole traders?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--red);font-weight:600">✗ NO — Full Expensing (100% FYA) applies ONLY to companies. Sole traders use AIA.</div>
+      </div>
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>3. Pension reduces Class 4 NIC?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--red);font-weight:600">✗ NO — Pension contributions extend IT bands but have NO effect on NIC.</div>
+      </div>
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>4. AIA on motor cars?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--red);font-weight:600">✗ NO — Cars are EXCLUDED from AIA. They go into main/special rate pool only.</div>
+      </div>
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>5. 4% diesel surcharge for RDE2?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--red);font-weight:600">✗ NO — RDE2-compliant diesels are EXEMPT from the 4% surcharge.</div>
+      </div>
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>6. Business use reduces car benefit?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--red);font-weight:600">✗ NO — Car benefit is NOT reduced for business use. Private use % is irrelevant.</div>
+      </div>
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>7. Dormant companies count as associated?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--red);font-weight:600">✗ NO — Dormant companies are EXCLUDED from the associated company count.</div>
+      </div>
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>8. Apply AEA against BADR gains first?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--red);font-weight:600">✗ NO — Apply AEA against higher-rate gains (24%) first to maximise tax saving!</div>
+      </div>
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>9. IHT taper relief reduces gift value?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--red);font-weight:600">✗ NO — Taper relief reduces the TAX PAYABLE, not the gift value!</div>
+      </div>
+      <div class="trap-card" onclick="this.querySelector('.trap-answer').style.display='block'" style="padding:1rem;background:var(--red-pale);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer">
+        <strong>10. 60-day CGT property deadline?</strong>
+        <div class="trap-answer" style="display:none;margin-top:0.5rem;color:var(--green-deep);font-weight:600">✓ YES — 60 days from completion for UK residential property CGT return AND payment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const updateDash = () => {
+    const dashXp = document.getElementById('dash-xp');
+    const dashRank = document.getElementById('dash-rank');
+    const dashStreak = document.getElementById('dash-streak');
+    const dashAccuracy = document.getElementById('dash-accuracy');
+    if (dashXp) dashXp.textContent = GAMIFICATION.totalXP + ' XP';
+    if (dashRank) dashRank.textContent = GAMIFICATION.getRank();
+    if (dashStreak) dashStreak.textContent = QUIZ_ENGINE.bestStreak + ' 🔥';
+    if (dashAccuracy) {
+      const acc = QUIZ_ENGINE.totalAttempted > 0 ? Math.round((QUIZ_ENGINE.totalCorrect / QUIZ_ENGINE.totalAttempted) * 100) : 0;
+      dashAccuracy.textContent = acc + '%';
+    }
+    QUIZ_ENGINE.badges.forEach(b => { const el = document.getElementById('badge-' + b); if (el) el.style.opacity = '1'; });
+  };
+  updateDash();
+  document.addEventListener('change', (e) => { if (e.target.type === 'checkbox') setTimeout(updateDash, 200); });
+});
+</script>

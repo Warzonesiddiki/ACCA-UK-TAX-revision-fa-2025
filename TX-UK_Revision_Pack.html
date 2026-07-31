@@ -980,7 +980,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <tr>
           <td>Marginal Relief zone (£50,001 – £250,000)</td>
           <td class="num">Effective rate 19% – 25%</td>
-          <td class="num">Marginal Fraction: 3/400ths</td>
+          <td class="num">Marginal Fraction: 3/200ths</td>
         </tr>
         <tr>
           <td>Main rate (Profits over £250,000)</td>
@@ -1189,7 +1189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q1" onchange="GAMIFICATION.toggleTask('q1', 10, this.checked)">
+        <input type="checkbox" data-task-id="q1-sec" onchange="GAMIFICATION.toggleTask('q1', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -1248,11 +1248,53 @@ Total Tax Liability:                             £1,996
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q15" onchange="GAMIFICATION.toggleTask('q15', 10, this.checked)">
+        <input type="checkbox" data-task-id="q15-sec" onchange="GAMIFICATION.toggleTask('q15', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
   </div>
+
+  <!-- DRILL Q16 -->
+  <div class="drill-card" id="q16-card">
+    <div class="drill-header">
+      <span class="drill-title">Q16 • Harrison's Dividend Income Tax Liability</span>
+      <div>
+        <span class="chip chip-xp">+10 XP</span>
+        <span class="chip chip-type">Section A OTQ</span>
+      </div>
+    </div>
+    <p>Harrison's only income in the tax year 2025/26 was dividend income of £56,950. What is Harrison's income tax liability for the tax year 2025/26?</p>
+
+    <button class="solution-toggle-btn" onclick="GAMIFICATION.toggleSolution(this)">▼ Show Working & Solution</button>
+    
+    <div class="solution-content">
+      <div class="computation-box">
+Gross Dividend Income:            £56,950
+Less Personal Allowance:         (£12,570)
+                                  -------
+Taxable Dividend Income:          £44,380
+
+Income Tax Liability:
+Dividend Nil Rate Band (£500 × 0%):                     £0
+Basic Rate Band (£37,200 × 8.75%):                  £3,255
+Higher Rate Band ((£44,380 - £37,700) = £6,680 × 33.75%): £2,255
+                                                    ------
+Total Income Tax Liability:                         £5,510
+      </div>
+      <div class="callout callout-tip">
+        <strong>CORRECT ANSWER: £5,510</strong><br>
+        The dividend nil rate band is £500. It uses up part of the basic rate band (£37,700), leaving £37,200 taxed at basic rate (8.75%) and the remaining £6,680 taxed at higher rate (33.75%).
+      </div>
+    </div>
+
+    <div style="margin-top:1rem;">
+      <label class="mark-done-check">
+        <input type="checkbox" data-task-id="q16-chk" onchange="GAMIFICATION.toggleTask('q16', 10, this.checked)">
+        Mark Done (+10 XP)
+      </label>
+    </div>
+  </div>
+
 </section>
 <!-- ═══ END PART 8/100 ═══ -->
 
@@ -1318,7 +1360,7 @@ Entitled Personal Allowance:       £9,420
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q14" onchange="GAMIFICATION.toggleTask('q14', 10, this.checked)">
+        <input type="checkbox" data-task-id="q14-sec" onchange="GAMIFICATION.toggleTask('q14', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -1378,7 +1420,7 @@ Child Benefit Tax Charge:
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q10" onchange="GAMIFICATION.toggleTask('q10', 10, this.checked)">
+        <input type="checkbox" data-task-id="q10-sec" onchange="GAMIFICATION.toggleTask('q10', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -1478,7 +1520,7 @@ Child Benefit Tax Charge:
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q32" onchange="GAMIFICATION.toggleTask('q32', 10, this.checked)">
+        <input type="checkbox" data-task-id="q32-sec" onchange="GAMIFICATION.toggleTask('q32', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -1523,7 +1565,7 @@ Fuel Benefit = £28,200 × Appropriate Percentage (%)
 
   <div class="card">
     <h3>🚚 Van Benefits, Accommodation & Beneficial Loans</h3>
-    <p>• <strong>Company Van Benefit:</strong> Flat charge of <strong>£4,020</strong> (Zero emission vans = £0 benefit). Fuel scale charge = <strong>£757</strong>.</p>
+    <p>• <strong>Company Van Benefit:</strong> Flat charge of <strong>£4,020</strong> (Zero emission vans = £0 benefit). Fuel scale charge = <strong>£769</strong>.</p>
     <p>• <strong>Beneficial Loans:</strong> Taxable if loan exceeds <strong>£10,000</strong> at any point in the tax year. Benefit = Loan × (Official Interest Rate 3.75% - Interest Paid).</p>
     <p>• <strong>Approved Mileage Allowance Payments (AMAP):</strong> Cars/Vans: <strong>45p/mile</strong> for first 10,000 business miles; <strong>25p/mile</strong> over 10,000 miles.</p>
   </div>
@@ -1563,7 +1605,7 @@ Provided from 6 May 2025 -> 11 months in tax year 2025/26 (May to March + April 
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q27" onchange="GAMIFICATION.toggleTask('q27', 10, this.checked)">
+        <input type="checkbox" data-task-id="q27-sec" onchange="GAMIFICATION.toggleTask('q27', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -1646,7 +1688,7 @@ Adjusted Trading Profit:           £248,600
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q35" onchange="GAMIFICATION.toggleTask('q35', 10, this.checked)">
+        <input type="checkbox" data-task-id="q35-sec" onchange="GAMIFICATION.toggleTask('q35', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -1725,7 +1767,7 @@ Balancing Allowance on Cessation = £800
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q41" onchange="GAMIFICATION.toggleTask('q41', 10, this.checked)">
+        <input type="checkbox" data-task-id="q41-sec" onchange="GAMIFICATION.toggleTask('q41', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -1798,7 +1840,7 @@ Max Claim = £24,000 + £50,000 = £74,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q47" onchange="GAMIFICATION.toggleTask('q47', 10, this.checked)">
+        <input type="checkbox" data-task-id="q47-sec" onchange="GAMIFICATION.toggleTask('q47', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -1868,7 +1910,7 @@ Total Allocation to Henry = £21,000 + £18,000 = £39,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q44" onchange="GAMIFICATION.toggleTask('q44', 10, this.checked)">
+        <input type="checkbox" data-task-id="q44-sec" onchange="GAMIFICATION.toggleTask('q44', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -1940,7 +1982,7 @@ Total Class 4 NIC = £2,262 + £154.60 = £2,416.60 -> £2,417
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q62" onchange="GAMIFICATION.toggleTask('q62', 10, this.checked)">
+        <input type="checkbox" data-task-id="q62-sec" onchange="GAMIFICATION.toggleTask('q62', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -2003,7 +2045,7 @@ Total Capacity 2025/26 = £60k + £3k + £12k = £75,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q66" onchange="GAMIFICATION.toggleTask('q66', 10, this.checked)">
+        <input type="checkbox" data-task-id="q66-sec" onchange="GAMIFICATION.toggleTask('q66', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -2072,7 +2114,7 @@ Each Payment on Account for 2025/26:
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q84" onchange="GAMIFICATION.toggleTask('q84', 10, this.checked)">
+        <input type="checkbox" data-task-id="q84-sec" onchange="GAMIFICATION.toggleTask('q84', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -2156,7 +2198,7 @@ Current Act 1 Coverage:
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q13" onchange="GAMIFICATION.toggleTask('q13', 10, this.checked)">
+        <input type="checkbox" data-task-id="q13-sec" onchange="GAMIFICATION.toggleTask('q13', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -2190,17 +2232,17 @@ Property Income Taxable Portion:
 £82,000 × [51 - (15 - 1)] / 50
 = £82,000 × (51 - 14) / 50
 = £82,000 × 37 / 50 = £60,680... wait!
-Let's check 51 - 14 = 37 / 50 = 74% × £82,000 = £60,680 (or £59,040 if N=15: £82,000 × 50 - 14 = 36/50 = 72% × £82,000 = £59,040).
+Let's check 51 - 14 = 37 / 50 = 74% × £82,000 = £60,680 (or £59,040 if N=15: £82,000 × 51 - 15 = 36/50 = 72% × £82,000 = £59,040).
       </div>
       <div class="callout callout-tip">
         <strong>CORRECT ANSWER: A (£59,040)</strong><br>
-        Taxable property income = Premium × [50 - (N - 1)] / 50 = £82,000 × [50 - 14] / 50 = £82,000 × 36/50 = £59,040.
+        Taxable property income = Premium × [51 - (N - 1)] / 50 = £82,000 × [51 - 15] / 50 = £82,000 × 36/50 = £59,040.
       </div>
     </div>
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q19" onchange="GAMIFICATION.toggleTask('q19', 10, this.checked)">
+        <input type="checkbox" data-task-id="q19-sec" onchange="GAMIFICATION.toggleTask('q19', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -2247,7 +2289,7 @@ Note 2: Ignore business/private mileage split (benefit is NOT reduced for busine
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q28" onchange="GAMIFICATION.toggleTask('q28', 10, this.checked)">
+        <input type="checkbox" data-task-id="q28-sec" onchange="GAMIFICATION.toggleTask('q28', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -2300,7 +2342,7 @@ Balancing Allowance Claimable = £6,000 × 60% = £3,600
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q38" onchange="GAMIFICATION.toggleTask('q38', 10, this.checked)">
+        <input type="checkbox" data-task-id="q38-sec" onchange="GAMIFICATION.toggleTask('q38', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -2351,7 +2393,7 @@ Sabine can relieve the FULL £25,000 loss against 2022/23 income!
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q50" onchange="GAMIFICATION.toggleTask('q50', 10, this.checked)">
+        <input type="checkbox" data-task-id="q50-sec" onchange="GAMIFICATION.toggleTask('q50', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -2408,7 +2450,7 @@ Annual Allowance Chargeable Amount = £75,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q69" onchange="GAMIFICATION.toggleTask('q69', 10, this.checked)">
+        <input type="checkbox" data-task-id="q69-sec" onchange="GAMIFICATION.toggleTask('q69', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -2500,7 +2542,7 @@ Total Tax Liability = £486 + £2,720 = £3,206
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q93" onchange="GAMIFICATION.toggleTask('q93', 25, this.checked)">
+        <input type="checkbox" data-task-id="q93-sec" onchange="GAMIFICATION.toggleTask('q93', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -2542,7 +2584,7 @@ Total Tax Liability = £486 + £2,720 = £3,206
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q95" onchange="GAMIFICATION.toggleTask('q95', 25, this.checked)">
+        <input type="checkbox" data-task-id="q95-sec" onchange="GAMIFICATION.toggleTask('q95', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -2597,7 +2639,7 @@ Incremental Tax Payable = £28,332 - £22,976 = £5,356
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q98" onchange="GAMIFICATION.toggleTask('q98', 40, this.checked)">
+        <input type="checkbox" data-task-id="q98-sec" onchange="GAMIFICATION.toggleTask('q98', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -2656,7 +2698,7 @@ Total Income Tax Liability:              £43,758
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q101" onchange="GAMIFICATION.toggleTask('q101', 40, this.checked)">
+        <input type="checkbox" data-task-id="q101-sec" onchange="GAMIFICATION.toggleTask('q101', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -2692,7 +2734,7 @@ Total Income Tax Liability:              £43,758
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q102" onchange="GAMIFICATION.toggleTask('q102', 40, this.checked)">
+        <input type="checkbox" data-task-id="q102-sec" onchange="GAMIFICATION.toggleTask('q102', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -2742,7 +2784,7 @@ Total Employment Income:                             £74,745
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q104" onchange="GAMIFICATION.toggleTask('q104', 40, this.checked)">
+        <input type="checkbox" data-task-id="q104-sec" onchange="GAMIFICATION.toggleTask('q104', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -2795,7 +2837,7 @@ Total Tax & NIC Saving = (£17,432 + £3,511) - £11,601 = £9,342 Tax Saved!
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q106" onchange="GAMIFICATION.toggleTask('q106', 40, this.checked)">
+        <input type="checkbox" data-task-id="q106-sec" onchange="GAMIFICATION.toggleTask('q106', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -2841,7 +2883,7 @@ Remaining Unrelieved Loss carried forward = £84,000 - £77,000 = £7,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q108" onchange="GAMIFICATION.toggleTask('q108', 40, this.checked)">
+        <input type="checkbox" data-task-id="q108-sec" onchange="GAMIFICATION.toggleTask('q108', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -2881,7 +2923,7 @@ Fleur should claim Rent-a-Room Relief (saves £5,100 of taxable income)!
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q111" onchange="GAMIFICATION.toggleTask('q111', 40, this.checked)">
+        <input type="checkbox" data-task-id="q111-sec" onchange="GAMIFICATION.toggleTask('q111', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -2916,7 +2958,7 @@ Joint Property Income Rules:
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q114" onchange="GAMIFICATION.toggleTask('q114', 40, this.checked)">
+        <input type="checkbox" data-task-id="q114-sec" onchange="GAMIFICATION.toggleTask('q114', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -2961,7 +3003,7 @@ Less Marriage Allowance Credit (£252)
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q122" onchange="GAMIFICATION.toggleTask('q122', 40, this.checked)">
+        <input type="checkbox" data-task-id="q122-sec" onchange="GAMIFICATION.toggleTask('q122', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -3187,7 +3229,7 @@ Deemed Occupation Periods (Provided house was occupied BEFORE and AFTER):
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q128" onchange="GAMIFICATION.toggleTask('q128', 10, this.checked)">
+        <input type="checkbox" data-task-id="q128-sec" onchange="GAMIFICATION.toggleTask('q128', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -3245,7 +3287,7 @@ New Purchase Price (£64,000) - Deferred Gain (£12,000) = £52,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q141" onchange="GAMIFICATION.toggleTask('q141', 10, this.checked)">
+        <input type="checkbox" data-task-id="q141-sec" onchange="GAMIFICATION.toggleTask('q141', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -3278,7 +3320,7 @@ Gain Rolled Over = Full Gain (£90,000) - Immediate Gain (£20,000) = £70,000
     </div>
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q151" onchange="GAMIFICATION.toggleTask('q151', 10, this.checked)">
+        <input type="checkbox" data-task-id="q151-sec" onchange="GAMIFICATION.toggleTask('q151', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -3330,7 +3372,7 @@ BADR Tax Liability (FA2025 rate 14%):
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q164" onchange="GAMIFICATION.toggleTask('q164', 25, this.checked)">
+        <input type="checkbox" data-task-id="q164-sec" onchange="GAMIFICATION.toggleTask('q164', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -3370,7 +3412,7 @@ CGT Payable @ 24% (FA2025 rate) = £151,275 × 24% = £36,306
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q166" onchange="GAMIFICATION.toggleTask('q166', 25, this.checked)">
+        <input type="checkbox" data-task-id="q166-sec" onchange="GAMIFICATION.toggleTask('q166', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -3424,7 +3466,7 @@ Taxable Gain = £30,000 - £20,000 = £10,000
     </div>
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q171" onchange="GAMIFICATION.toggleTask('q171', 25, this.checked)">
+        <input type="checkbox" data-task-id="q171-sec" onchange="GAMIFICATION.toggleTask('q171', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -3468,7 +3510,7 @@ CGT Liability = £700 × 14% = £98
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q175" onchange="GAMIFICATION.toggleTask('q175', 40, this.checked)">
+        <input type="checkbox" data-task-id="q175-sec" onchange="GAMIFICATION.toggleTask('q175', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -3510,7 +3552,7 @@ Nov 2025 Disposal: Proceeds £53,400 - £16,312 = Chargeable Gain £37,088
     </div>
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q179" onchange="GAMIFICATION.toggleTask('q179', 40, this.checked)">
+        <input type="checkbox" data-task-id="q179-sec" onchange="GAMIFICATION.toggleTask('q179', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -3680,7 +3722,7 @@ Tax Payable = £190,000 × (100% - 40%) = £190,000 × 60% = £114,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q181" onchange="GAMIFICATION.toggleTask('q181', 10, this.checked)">
+        <input type="checkbox" data-task-id="q181-sec" onchange="GAMIFICATION.toggleTask('q181', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -3728,7 +3770,7 @@ Transfer of Value (Loss to Donor) =               £114,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q195" onchange="GAMIFICATION.toggleTask('q195', 10, this.checked)">
+        <input type="checkbox" data-task-id="q195-sec" onchange="GAMIFICATION.toggleTask('q195', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -3774,7 +3816,7 @@ Net Residence Estate Value:         £375,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q203" onchange="GAMIFICATION.toggleTask('q203', 25, this.checked)">
+        <input type="checkbox" data-task-id="q203-sec" onchange="GAMIFICATION.toggleTask('q203', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -3812,7 +3854,7 @@ Additional Death Tax Due = £0
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q205" onchange="GAMIFICATION.toggleTask('q205', 25, this.checked)">
+        <input type="checkbox" data-task-id="q205-sec" onchange="GAMIFICATION.toggleTask('q205', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -3849,7 +3891,7 @@ Transfer of Value (PET) =                                  £120,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q208" onchange="GAMIFICATION.toggleTask('q208', 25, this.checked)">
+        <input type="checkbox" data-task-id="q208-sec" onchange="GAMIFICATION.toggleTask('q208', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -3896,7 +3938,7 @@ Death Estate IHT @ 40%: £525,000 × 40% = £210,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q210" onchange="GAMIFICATION.toggleTask('q210', 40, this.checked)">
+        <input type="checkbox" data-task-id="q210-sec" onchange="GAMIFICATION.toggleTask('q210', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -3909,7 +3951,7 @@ Death Estate IHT @ 40%: £525,000 × 40% = £210,000
   <div class="part-header">
     <div class="part-kicker">ACT 4 • CORPORATION TAX</div>
     <h2 class="part-title">Part 64: CT-01 Corporation Tax Accounting Periods, FY2023–2025 Rates & Marginal Relief</h2>
-    <p class="part-subtitle">Accounting periods (max 12 months), Small Profits Rate (19%), Main Rate (25%), Marginal Relief formula (3/400ths), and Associated Companies division.</p>
+    <p class="part-subtitle">Accounting periods (max 12 months), Small Profits Rate (19%), Main Rate (25%), Marginal Relief formula (3/200ths), and Associated Companies division.</p>
   </div>
 
   <div class="card">
@@ -3926,7 +3968,7 @@ Death Estate IHT @ 40%: £525,000 × 40% = £210,000
     </table>
 
     <div class="computation-box">
-Marginal Relief Formula = (3 / 400) × [ Upper Limit - Augmented Profits ] × ( Taxable Total Profits / Augmented Profits )
+Marginal Relief Formula = (3 / 200) × [ Upper Limit - Augmented Profits ] × ( Taxable Total Profits / Augmented Profits )
 
 Where:
 • N = 1 + Number of Associated Companies worldwide.
@@ -4036,7 +4078,7 @@ Chargeable Estate (Left to Daughter):                   £395,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q192" onchange="GAMIFICATION.toggleTask('q192', 10, this.checked)">
+        <input type="checkbox" data-task-id="q192-sec" onchange="GAMIFICATION.toggleTask('q192', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -4129,7 +4171,7 @@ NTLR Net Income = £40,000 - £8,000 = £32,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q218" onchange="GAMIFICATION.toggleTask('q218', 10, this.checked)">
+        <input type="checkbox" data-task-id="q218-sec" onchange="GAMIFICATION.toggleTask('q218', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -4188,7 +4230,7 @@ Total Capital Allowances = £165,000 (AIA) + £2,700 (WDA) = £167,700
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q224" onchange="GAMIFICATION.toggleTask('q224', 10, this.checked)">
+        <input type="checkbox" data-task-id="q224-sec" onchange="GAMIFICATION.toggleTask('q224', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -4243,7 +4285,7 @@ So Forty Ltd is NOT in Ten Ltd's Gains group either!
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q236" onchange="GAMIFICATION.toggleTask('q236', 10, this.checked)">
+        <input type="checkbox" data-task-id="q236-sec" onchange="GAMIFICATION.toggleTask('q236', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -4300,7 +4342,7 @@ Chelfry Ltd qualifies for the grace period exception!
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q249" onchange="GAMIFICATION.toggleTask('q249', 10, this.checked)">
+        <input type="checkbox" data-task-id="q249-sec" onchange="GAMIFICATION.toggleTask('q249', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -4351,7 +4393,7 @@ Total Entertaining Add-Back = £3,600 + £1,840 = £5,440
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q252" onchange="GAMIFICATION.toggleTask('q252', 25, this.checked)">
+        <input type="checkbox" data-task-id="q252-sec" onchange="GAMIFICATION.toggleTask('q252', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -4387,7 +4429,7 @@ Loss Carried Forward (s.45A):           £40,000
     </div>
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q254" onchange="GAMIFICATION.toggleTask('q254', 25, this.checked)">
+        <input type="checkbox" data-task-id="q254-sec" onchange="GAMIFICATION.toggleTask('q254', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -4438,7 +4480,7 @@ Annual Expense = £48,360 / 20 years = £2,418 p.a.
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q256" onchange="GAMIFICATION.toggleTask('q256', 40, this.checked)">
+        <input type="checkbox" data-task-id="q256-sec" onchange="GAMIFICATION.toggleTask('q256', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -4482,7 +4524,7 @@ Immediate Gain Taxed = £20,000
     </div>
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q262" onchange="GAMIFICATION.toggleTask('q262', 40, this.checked)">
+        <input type="checkbox" data-task-id="q262-sec" onchange="GAMIFICATION.toggleTask('q262', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -4520,7 +4562,7 @@ Max Group Relief Surrendered = Lower of £75,000 and £200,000 = £75,000
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q265" onchange="GAMIFICATION.toggleTask('q265', 40, this.checked)">
+        <input type="checkbox" data-task-id="q265-sec" onchange="GAMIFICATION.toggleTask('q265', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -4693,7 +4735,7 @@ Total Input VAT Reclaimable = £660 (pre-reg) + £330 (current) = £990
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q276" onchange="GAMIFICATION.toggleTask('q276', 10, this.checked)">
+        <input type="checkbox" data-task-id="q276-sec" onchange="GAMIFICATION.toggleTask('q276', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -4746,7 +4788,7 @@ FRS VAT Liability = £150,000 × 11% = £16,500
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q290" onchange="GAMIFICATION.toggleTask('q290', 10, this.checked)">
+        <input type="checkbox" data-task-id="q290-sec" onchange="GAMIFICATION.toggleTask('q290', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -4786,7 +4828,7 @@ FRS VAT Liability = £150,000 × 11% = £16,500
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q293" onchange="GAMIFICATION.toggleTask('q293', 25, this.checked)">
+        <input type="checkbox" data-task-id="q293-sec" onchange="GAMIFICATION.toggleTask('q293', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -4824,7 +4866,7 @@ Effective Registration Date = 1 December 2025 (1st day of second month following
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q296" onchange="GAMIFICATION.toggleTask('q296', 25, this.checked)">
+        <input type="checkbox" data-task-id="q296-sec" onchange="GAMIFICATION.toggleTask('q296', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -4858,7 +4900,7 @@ Output VAT Charged = £0 (Outside scope of VAT).
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="q299" onchange="GAMIFICATION.toggleTask('q299', 25, this.checked)">
+        <input type="checkbox" data-task-id="q299-sec" onchange="GAMIFICATION.toggleTask('q299', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -4979,7 +5021,7 @@ Total Class 4 NIC = £2,262 + £648.60 = £2,910.60 -> £2,911
 
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="sq1" onchange="GAMIFICATION.toggleTask('sq1', 10, this.checked)">
+        <input type="checkbox" data-task-id="sq1-sec" onchange="GAMIFICATION.toggleTask('sq1', 10, this.checked)">
         Mark Done (+10 XP)
       </label>
     </div>
@@ -5011,7 +5053,7 @@ Remaining Stocks & Shares ISA Allowance = £12,000
     </div>
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="sq16" onchange="GAMIFICATION.toggleTask('sq16', 25, this.checked)">
+        <input type="checkbox" data-task-id="sq16-sec" onchange="GAMIFICATION.toggleTask('sq16', 25, this.checked)">
         Mark Case Done (+25 XP)
       </label>
     </div>
@@ -5054,7 +5096,7 @@ Total Income Tax Liability:                 £18,182
     </div>
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="sq31" onchange="GAMIFICATION.toggleTask('sq31', 40, this.checked)">
+        <input type="checkbox" data-task-id="sq31-sec" onchange="GAMIFICATION.toggleTask('sq31', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -5102,7 +5144,7 @@ Corporation Tax Liability = £465,000 × 25% = £116,250
     </div>
     <div style="margin-top:1rem;">
       <label class="mark-done-check">
-        <input type="checkbox" data-task-id="sq33" onchange="GAMIFICATION.toggleTask('sq33', 40, this.checked)">
+        <input type="checkbox" data-task-id="sq33-sec" onchange="GAMIFICATION.toggleTask('sq33', 40, this.checked)">
         Mark Masterclass Done (+40 XP)
       </label>
     </div>
@@ -5148,7 +5190,7 @@ Personal Allowance: £12,570 (Taper limit £100,000). Marriage allowance: £1,26
 CORPORATION TAX RATES
 Small profits rate (£50,000 limit): 19%
 Main rate (£250,000 limit): 25%
-Marginal fraction: 3/400ths
+Marginal fraction: 3/200ths
 
 CAPITAL GAINS TAX RATES
 Lower rate: 18% | Higher rate: 24%

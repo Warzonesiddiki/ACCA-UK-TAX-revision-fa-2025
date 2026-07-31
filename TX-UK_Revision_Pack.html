@@ -765,6 +765,495 @@ code, pre, .mono {
   margin-bottom: 0.5rem;
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   CBE WORKSPACE TOOLS, FLASHCARDS, DEADLINES GAME & CALCULATORS CSS
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --body-font-size: 0.95rem;
+}
+body {
+  font-size: var(--body-font-size);
+}
+
+.hud-tools-group {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hud-btn-sm {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line-strong, #cbd5e1);
+  color: var(--ink, #0f172a);
+  padding: 0.25rem 0.55rem;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.hud-btn-sm:hover {
+  border-color: var(--green, #15803d);
+  color: var(--green, #15803d);
+  background: var(--green-pale, #f0fdf4);
+}
+
+/* Floating CBE Calculator */
+.cbe-calc-widget {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 270px;
+  background: #0f172a;
+  color: #f8fafc;
+  border: 2px solid #334155;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  z-index: 9998;
+  font-family: var(--font-mono, monospace);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.cbe-calc-widget.minimized .cbe-calc-body {
+  display: none;
+}
+.cbe-calc-widget.hidden {
+  display: none;
+}
+.cbe-calc-header {
+  background: #1e293b;
+  padding: 0.4rem 0.7rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #334155;
+  user-select: none;
+}
+.cbe-calc-body {
+  padding: 0.7rem;
+}
+.cbe-calc-display {
+  background: #020617;
+  color: #38bdf8;
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  text-align: right;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  overflow-x: auto;
+  min-height: 48px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cbe-calc-display-sub {
+  font-size: 0.65rem;
+  color: #64748b;
+  min-height: 12px;
+}
+.cbe-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+}
+.cbe-calc-btn {
+  background: #334155;
+  color: #f8fafc;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cbe-calc-btn:hover {
+  background: #475569;
+}
+.cbe-calc-btn:active {
+  transform: scale(0.96);
+}
+.cbe-calc-btn.op-btn {
+  background: #0284c7;
+}
+.cbe-calc-btn.op-btn:hover {
+  background: #0369a1;
+}
+.cbe-calc-btn.eq-btn {
+  background: #16a34a;
+  grid-column: span 2;
+}
+.cbe-calc-btn.eq-btn:hover {
+  background: #15803d;
+}
+.cbe-calc-btn.clear-btn {
+  background: #dc2626;
+}
+.cbe-calc-btn.clear-btn:hover {
+  background: #b91c1c;
+}
+.cbe-calc-btn.mem-btn {
+  background: #475569;
+  font-size: 0.7rem;
+}
+
+/* CBE Modals */
+.cbe-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.cbe-modal.open {
+  display: flex;
+}
+.cbe-modal-content {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line-strong, #cbd5e1);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+  padding: 1.5rem;
+  position: relative;
+}
+.cbe-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--line, #e2e8f0);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+.cbe-modal-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink, #0f172a);
+}
+.cbe-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ink-soft, #64748b);
+}
+
+/* Flashcards 3D flip */
+.flashcard-wrapper {
+  perspective: 1000px;
+  min-height: 220px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  text-align: center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flashcard-wrapper.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--green, #15803d);
+  box-sizing: border-box;
+}
+.flashcard-front {
+  background: var(--paper, #fdfdfa);
+  color: var(--ink, #0f172a);
+}
+.flashcard-back {
+  background: var(--green-pale, #f0fdf4);
+  color: var(--green-deep, #14532d);
+  transform: rotateY(180deg);
+}
+
+/* Deadlines Matching Game */
+.matching-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.matching-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.matching-card {
+  padding: 0.75rem;
+  border: 2px dashed var(--line-strong, #cbd5e1);
+  border-radius: 8px;
+  background: var(--card, #ffffff);
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.2s;
+  user-select: none;
+}
+.matching-card:hover {
+  border-color: var(--green, #15803d);
+  background: var(--green-pale, #f0fdf4);
+}
+.matching-card.selected {
+  border-color: #0284c7;
+  background: #e0f2fe;
+  font-weight: 700;
+}
+.matching-card.matched {
+  border-style: solid;
+  border-color: #16a34a;
+  background: #dcfce7;
+  color: #14532d;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Tax Drawer Tabs & Mini-Calculators */
+.drawer-tabs {
+  display: flex;
+  gap: 0.4rem;
+  border-bottom: 2px solid var(--line, #e2e8f0);
+  margin-bottom: 0.8rem;
+}
+.drawer-tab-btn {
+  background: none;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--ink-soft, #64748b);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.drawer-tab-btn.active {
+  color: var(--green, #15803d);
+  border-bottom-color: var(--green, #15803d);
+}
+.tax-calc-box {
+  background: var(--card, #f8fafc);
+  border: 1px solid var(--line-strong, #cbd5e1);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.8rem;
+}
+.tax-calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  font-size: 0.78rem;
+}
+.tax-calc-input {
+  width: 100px;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--line-strong, #cbd5e1);
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  text-align: right;
+  font-size: 0.8rem;
+}
+.tax-calc-res {
+  background: var(--green-pale, #f0fdf4);
+  color: var(--green-deep, #14532d);
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+/* Category Mastery & Weakness Map */
+.category-mastery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.cat-mastery-card {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line-strong, #cbd5e1);
+  border-radius: 8px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.cat-mastery-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.cat-progress-bg {
+  background: var(--line, #e2e8f0);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cat-progress-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* Highlighting & Option Strikethrough */
+mark.cbe-highlight {
+  background-color: #fef08a;
+  color: #0f172a;
+  padding: 0.1em 0.25em;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.option-item.strikethrough {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+.text-tool-bar {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+/* Section B Split Case Layout */
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 868px) {
+  .case-study-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.case-scenario-sticky {
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background: var(--card);
+  border: 2px solid var(--green);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+@media print {
+  .sticky-command-bar,
+  .topic-sidebar,
+  .sidebar-toggle,
+  .cbe-calc-widget,
+  .scratchpad-widget,
+  .tax-drawer,
+  .tax-drawer-toggle-btn,
+  .cbe-modal,
+  button,
+  .hud-btn-sm,
+  .quickfire-btn,
+  .flag-btn {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+  }
+  .card, .part-section {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+}
+
+/* Interactive Matrix Table Styling */
+.matrix-quiz-card {
+  background: var(--card, #ffffff);
+  border: 2px solid var(--line-strong, #cbd5e1);
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+}
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+}
+.matrix-table th, .matrix-table td {
+  border: 1px solid var(--line-strong, #cbd5e1);
+  padding: 0.6rem;
+  text-align: center;
+}
+.matrix-table th:first-child, .matrix-table td:first-child {
+  text-align: left;
+}
+.matrix-table tr.row-correct {
+  background: #dcfce7 !important;
+}
+.matrix-table tr.row-incorrect {
+  background: #fee2e2 !important;
+}
+
+/* Scenario Annotation Toolbar */
+.scenario-annotation-bar {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  background: var(--paper-deep, #f1f5f9);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.annotation-btn {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line-strong, #cbd5e1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+.annotation-btn:hover {
+  border-color: var(--green, #15803d);
+}
 </style>
 
 <script>
@@ -1012,6 +1501,17 @@ const QUIZ_ENGINE = {
     this.attachOptionListeners();
   },
   saveState() { localStorage.setItem('TX_QUIZ_ENGINE_STATE', JSON.stringify({streak:this.streak,bestStreak:this.bestStreak,totalCorrect:this.totalCorrect,totalAttempted:this.totalAttempted,badges:Array.from(this.badges)})); },
+  shuffleOptions() {
+    document.querySelectorAll('.options-group').forEach(group => {
+      const items = Array.from(group.querySelectorAll('.option-item'));
+      if (items.length <= 1) return;
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        group.appendChild(items[j]);
+      }
+    });
+    this.attachOptionListeners();
+  },
   attachOptionListeners() {
     document.querySelectorAll('.options-group').forEach(group => {
       const radios = group.querySelectorAll('input[type="radio"]');
@@ -1165,7 +1665,10 @@ document.addEventListener('DOMContentLoaded',()=>{QUIZ_ENGINE.init();SIDEBAR.upd
 
 <canvas id="confetti-canvas"></canvas>
 <div class="exam-timer-panel" id="exam-timer-panel">
-  <div class="timer-section" id="timer-section">Section A</div>
+  <div class="timer-section" id="timer-section">Section A
+        <div style="font-size: 0.75rem; color: var(--ink-soft); margin-top: 0.4rem; font-family: var(--font-mono);">
+          ⏱️ Target Pacing: <strong>1.8 minutes per mark</strong> (Section A: 54m | Section B: 54m | Section C: 72m)
+        </div></div>
   <div class="timer-display" id="timer-display">54:00</div>
   <div class="timer-controls">
     <button onclick="EXAM_TIMER.pause()">⏸ Pause</button>
@@ -1260,7 +1763,21 @@ document.addEventListener('DOMContentLoaded',()=>{QUIZ_ENGINE.init();SIDEBAR.upd
         <span class="hud-value" id="hud-xp-val">0 XP</span>
       </div>
     <div style="display:flex;gap:0.5rem;align-items:center">
-        <button class="quickfire-btn" onclick="QUICK_FIRE.start()">⚡ Quick Fire</button>
+        <div class="hud-tools-group">
+        <button class="hud-btn-sm" onclick="CBE_CALCULATOR.toggle()" title="Floating CBE Calculator (Alt+C)">🧮 Calc</button>
+        <button class="hud-btn-sm" onclick="FLASHCARDS.open()" title="Interactive Flashcards (Alt+F)">📇 Flashcards</button>
+        <button class="hud-btn-sm" onclick="DEADLINES_GAME.open()" title="Tax Deadlines Game">🎯 Deadlines</button>
+        <button class="hud-btn-sm" onclick="KEYBOARD_SHORTCUTS.open()" title="Keyboard Shortcuts (Ctrl+/)">⌨️ Keys</button>
+        <button class="hud-btn-sm" onclick="STATE_EXPORT_IMPORT.exportState()" title="Export Progress JSON">📥 Save</button>
+        <button class="hud-btn-sm" onclick="document.getElementById('import-file-input').click()" title="Import Progress JSON">📤 Load</button>
+        <input type="file" id="import-file-input" accept=".json" style="display:none" onchange="STATE_EXPORT_IMPORT.importState(event)">
+        <div style="display:inline-flex; border:1px solid var(--line-strong); border-radius:5px; overflow:hidden;">
+          <button class="hud-btn-sm" onclick="FONT_SIZER.change(-0.05)" title="Decrease Text Size" style="border:none">A-</button>
+          <button class="hud-btn-sm" onclick="FONT_SIZER.reset()" title="Reset Text Size" style="border:none; border-left:1px solid var(--line); border-right:1px solid var(--line)">100%</button>
+          <button class="hud-btn-sm" onclick="FONT_SIZER.change(0.05)" title="Increase Text Size" style="border:none">A+</button>
+        </div>
+      </div>
+      <button class="quickfire-btn" onclick="QUICK_FIRE.start()">⚡ Quick Fire</button>
       </div>
     </div>
   </div>
@@ -2296,6 +2813,60 @@ Provided from 6 May 2025 -> 11 months in tax year 2025/26 (May to March + April 
 <section class="part-section" id="part-13">
   <div class="part-header">
     <div class="part-kicker">ACT 1 • INCOME TAX & NIC</div>
+  <!-- INTERACTIVE CHOICE MATRIX QUESTION COMPONENT (SUBPHASE 3.3) -->
+  <div class="matrix-quiz-card">
+    <h3 style="color:var(--green-deep); margin-bottom:0.4rem; display:flex; align-items:center; gap:0.5rem;">
+      <span>📋</span> Interactive Adjustment Matrix — Trading Profit Tax Treatment
+    </h3>
+    <p style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:0.8rem;">
+      Determine whether each expense item in the accounts must be <strong>Add Back (Disallowable)</strong> or <strong>Allowable</strong> for trading profit computation:
+    </p>
+
+    <div style="overflow-x:auto;">
+      <table class="matrix-table" id="trading-adj-matrix">
+        <thead>
+          <tr>
+            <th>Expense Line Item</th>
+            <th style="width:140px;">Add Back (Disallowable)</th>
+            <th style="width:140px;">Allowable Expense</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-correct="addback">
+            <td><strong>1. Depreciation on office equipment (£2,500)</strong></td>
+            <td><input type="radio" name="mat_q1" value="addback"></td>
+            <td><input type="radio" name="mat_q1" value="allowable"></td>
+          </tr>
+          <tr data-correct="addback">
+            <td><strong>2. Entertaining UK clients (£1,200)</strong></td>
+            <td><input type="radio" name="mat_q2" value="addback"></td>
+            <td><input type="radio" name="mat_q2" value="allowable"></td>
+          </tr>
+          <tr data-correct="allowable">
+            <td><strong>3. Entertaining employees at annual party (£800)</strong></td>
+            <td><input type="radio" name="mat_q3" value="addback"></td>
+            <td><input type="radio" name="mat_q3" value="allowable"></td>
+          </tr>
+          <tr data-correct="addback">
+            <td><strong>4. Legal fees acquiring 15-year lease (£1,500)</strong></td>
+            <td><input type="radio" name="mat_q4" value="addback"></td>
+            <td><input type="radio" name="mat_q4" value="allowable"></td>
+          </tr>
+          <tr data-correct="allowable">
+            <td><strong>5. Gift of trade samples with company logo (<£50 each) (£400)</strong></td>
+            <td><input type="radio" name="mat_q5" value="addback"></td>
+            <td><input type="radio" name="mat_q5" value="allowable"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.8rem; flex-wrap:wrap; gap:0.5rem;">
+      <button class="quickfire-btn" onclick="MATRIX_QUIZ.checkMatrix('trading-adj-matrix')" style="padding:0.5rem 1rem;">✓ Evaluate Matrix Choices</button>
+      <div id="matrix-status-trading-adj-matrix" style="font-weight:700; font-size:0.85rem; color:var(--green-deep);">Select options for all 5 rows</div>
+    </div>
+  </div>
+
     <h2 class="part-title">Part 13: IT-07 Trading Income: Cash Basis vs Accruals & Profit Adjustments</h2>
     <p class="part-subtitle">Allowable vs disallowable expenditure, lease premium relief, goods for own use, and questions Q34–Q36.</p>
   </div>
@@ -5334,9 +5905,80 @@ Loss Carried Forward (s.45A):           £40,000
 <section class="part-section" id="part-76">
   <div class="part-header">
     <div class="part-kicker">ACT 4 • SECTION C MASTERCLASSES</div>
+  <!-- INTERACTIVE SECTION C PRO-FORMA CALCULATION GRID (SUBPHASE 5.1 & 5.4) -->
+  <div class="card" style="border: 2px solid var(--green); border-radius: 10px; padding: 1.5rem; margin: 2rem 0;">
+    <h3 style="color: var(--green-deep); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+      <span>🏢</span> Interactive Pro-Forma Worksheet — Corporation Tax (TTP) Computation
+    </h3>
+    <p style="font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 1rem;">
+      Draft the company's Taxable Total Profits (TTP) pro-forma. Click <strong>"Check CT Computations"</strong> to verify line items.
+    </p>
+
+    <div style="overflow-x: auto;">
+      <table class="proforma-grid" id="ct-proforma-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Corporation Tax Item</th>
+            <th style="width:200px;">Amount (£)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Trading Profit (after Capital Allowances)</td>
+            <td><input type="number" class="pf-input" id="pf-ct-trade" value="180000" oninput="PROFORMA_GRID.calcCT()"></td>
+          </tr>
+          <tr>
+            <td>Non-Trading Loan Relationships (Interest Income)</td>
+            <td><input type="number" class="pf-input" id="pf-ct-ntlr" value="15000" oninput="PROFORMA_GRID.calcCT()"></td>
+          </tr>
+          <tr>
+            <td>Property Business Income</td>
+            <td><input type="number" class="pf-input" id="pf-ct-prop" value="25000" oninput="PROFORMA_GRID.calcCT()"></td>
+          </tr>
+          <tr>
+            <td>Chargeable Gains (net of capital losses)</td>
+            <td><input type="number" class="pf-input" id="pf-ct-cgt" value="10000" oninput="PROFORMA_GRID.calcCT()"></td>
+          </tr>
+          <tr style="background:var(--paper); font-weight:700;">
+            <td><strong>Total Profits</strong></td>
+            <td id="pf-ct-tot-prof" style="text-align:right;">£230,000</td>
+          </tr>
+          <tr>
+            <td>Less: Qualifying Charitable Donations (QCDs)</td>
+            <td><input type="number" class="pf-input" id="pf-ct-qcd" value="5000" oninput="PROFORMA_GRID.calcCT()"></td>
+          </tr>
+          <tr style="background:var(--green-pale); font-weight:700;">
+            <td><strong>Taxable Total Profits (TTP)</strong></td>
+            <td id="pf-ct-ttp" style="text-align:right; color:var(--green-deep); font-size:1rem;">£225,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; flex-wrap:wrap; gap:0.5rem;">
+      <button class="quickfire-btn" onclick="PROFORMA_GRID.checkCT()" style="padding:0.6rem 1.2rem;">✓ Check CT Computations</button>
+      <div id="pf-ct-status" style="font-weight:700; font-size:0.9rem; color:var(--green-deep);">Status: Enter CT values above</div>
+    </div>
+  </div>
+
     <h2 class="part-title">Part 76: Section C Masterclass — Q256 Harbour Ltd, Q257 Deimos/Elara/Fenrir & Q258 Venus Ltd (15 Marks Each)</h2>
     <p class="part-subtitle">Short accounting periods, AIA time apportionment (4/12), 50% SRP FYA, lease premium deductions, and ethics of tax avoidance vs evasion.</p>
   </div>
+  <!-- SECTION C EXCEL WORKBOOK INTEGRATION -->
+  <div class="card" style="background: linear-gradient(135deg, #10b98115, #04785715); border: 2px solid var(--green); border-radius: 10px; padding: 1.2rem 1.5rem; margin: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div style="flex: 1; min-width: 280px;">
+      <h3 style="color: var(--green-deep); margin-bottom: 0.3rem; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>📊</span> ACCA Section C Companion Excel Workbook (FA2025)
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--ink-soft); margin: 0;">
+        Practice constructed-response pro-formas in official ACCA CBE spreadsheet format. Includes automated calculation checks, mark schemes, and model solutions.
+      </p>
+    </div>
+    <a href="TX-UK_SectionC_Practice_Pack_FA2025.xlsx" download="TX-UK_SectionC_Practice_Pack_FA2025.xlsx" class="quickfire-btn" style="background: var(--green-deep); color: white; text-decoration: none; padding: 0.65rem 1.2rem; font-size: 0.88rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700;">
+      <span>📥 Download Companion Excel Pack (.xlsx)</span>
+    </a>
+  </div>
+
 
   <!-- MASTERCLASS Q256 HARBOUR LTD -->
   <div class="card" id="q256">
@@ -5808,6 +6450,21 @@ Output VAT Charged = £0 (Outside scope of VAT).
     <h2 class="part-title">Part 90: Section C Masterclass — Q304 Silverstone, Q305 Tardy & Q306 Zia (10 Marks Each)</h2>
     <p class="part-subtitle">Constructed response scenarios on VAT registration, late payment interest, and Act 5 Finale.</p>
   </div>
+  <!-- SECTION C EXCEL WORKBOOK INTEGRATION -->
+  <div class="card" style="background: linear-gradient(135deg, #10b98115, #04785715); border: 2px solid var(--green); border-radius: 10px; padding: 1.2rem 1.5rem; margin: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div style="flex: 1; min-width: 280px;">
+      <h3 style="color: var(--green-deep); margin-bottom: 0.3rem; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>📊</span> ACCA Section C Companion Excel Workbook (FA2025)
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--ink-soft); margin: 0;">
+        Practice constructed-response pro-formas in official ACCA CBE spreadsheet format. Includes automated calculation checks, mark schemes, and model solutions.
+      </p>
+    </div>
+    <a href="TX-UK_SectionC_Practice_Pack_FA2025.xlsx" download="TX-UK_SectionC_Practice_Pack_FA2025.xlsx" class="quickfire-btn" style="background: var(--green-deep); color: white; text-decoration: none; padding: 0.65rem 1.2rem; font-size: 0.88rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700;">
+      <span>📥 Download Companion Excel Pack (.xlsx)</span>
+    </a>
+  </div>
+
 
   <div class="card">
     <h3>🎉 Act 5 Mid-Point Mastery Checkpoint</h3>
@@ -5830,6 +6487,7 @@ Output VAT Charged = £0 (Outside scope of VAT).
     
     <!-- Tab Filters -->
     <div style="display:flex; justify-content:center; gap:0.5rem; margin-top:2rem; flex-wrap:wrap;">
+      <button class="solution-toggle-btn" onclick="QUIZ_ENGINE.shuffleOptions()" style="background-color:var(--gold); color:#0f172a; font-weight:700;">🎲 Shuffle Choices</button>
       <button class="solution-toggle-btn" onclick="filterVault('all')">🌐 All (113)</button>
       <button class="solution-toggle-btn" onclick="filterVault('it')" style="background-color:var(--violet);">📚 Income Tax</button>
       <button class="solution-toggle-btn" onclick="filterVault('cgt')" style="background-color:var(--blue);">🔵 CGT</button>
@@ -22358,9 +23016,97 @@ Remaining Stocks & Shares ISA Allowance = £12,000
 <section class="part-section" id="part-95">
   <div class="part-header">
     <div class="part-kicker">ACT 7 • SPECIMEN EXAMINATION</div>
+  <!-- INTERACTIVE SECTION C PRO-FORMA CALCULATION GRID (SUBPHASE 5.1 & 5.4) -->
+  <div class="card" style="border: 2px solid var(--green); border-radius: 10px; padding: 1.5rem; margin: 2rem 0;">
+    <h3 style="color: var(--green-deep); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+      <span>🧮</span> Interactive Pro-Forma Worksheet — Income Tax Computation
+    </h3>
+    <p style="font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 1rem;">
+      Draft your income tax computation in the pro-forma grid below. Click <strong>"Check Pro-Forma Sums"</strong> to verify your totals against FA2025 rules.
+    </p>
+
+    <div style="overflow-x: auto;">
+      <table class="proforma-grid" id="it-proforma-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Income Stream</th>
+            <th>Non-Savings (£)</th>
+            <th>Savings (£)</th>
+            <th>Dividends (£)</th>
+            <th>Total (£)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Employment / Trading Income</strong></td>
+            <td><input type="number" class="pf-input" id="pf-ns-trade" value="45000" oninput="PROFORMA_GRID.calcIT()"></td>
+            <td><input type="number" class="pf-input" value="0" disabled style="background:#f1f5f9;"></td>
+            <td><input type="number" class="pf-input" value="0" disabled style="background:#f1f5f9;"></td>
+            <td id="pf-tot-trade" style="font-weight:600; text-align:right;">£45,000</td>
+          </tr>
+          <tr>
+            <td><strong>Bank Interest Income</strong></td>
+            <td><input type="number" class="pf-input" value="0" disabled style="background:#f1f5f9;"></td>
+            <td><input type="number" class="pf-input" id="pf-sav-int" value="1200" oninput="PROFORMA_GRID.calcIT()"></td>
+            <td><input type="number" class="pf-input" value="0" disabled style="background:#f1f5f9;"></td>
+            <td id="pf-tot-int" style="font-weight:600; text-align:right;">£1,200</td>
+          </tr>
+          <tr>
+            <td><strong>Dividend Income</strong></td>
+            <td><input type="number" class="pf-input" value="0" disabled style="background:#f1f5f9;"></td>
+            <td><input type="number" class="pf-input" value="0" disabled style="background:#f1f5f9;"></td>
+            <td><input type="number" class="pf-input" id="pf-div-inc" value="3500" oninput="PROFORMA_GRID.calcIT()"></td>
+            <td id="pf-tot-div" style="font-weight:600; text-align:right;">£3,500</td>
+          </tr>
+          <tr style="background:var(--paper); font-weight:700;">
+            <td><strong>Total Income</strong></td>
+            <td id="pf-tot-ns" style="text-align:right;">£45,000</td>
+            <td id="pf-tot-sav" style="text-align:right;">£1,200</td>
+            <td id="pf-tot-div-col" style="text-align:right;">£3,500</td>
+            <td id="pf-grand-tot" style="text-align:right; color:var(--green-deep);">£49,700</td>
+          </tr>
+          <tr>
+            <td>Less: Personal Allowance (PA)</td>
+            <td><input type="number" class="pf-input" id="pf-pa-ded" value="12570" oninput="PROFORMA_GRID.calcIT()"></td>
+            <td><input type="number" class="pf-input" value="0" disabled style="background:#f1f5f9;"></td>
+            <td><input type="number" class="pf-input" value="0" disabled style="background:#f1f5f9;"></td>
+            <td id="pf-tot-pa" style="text-align:right;">(£12,570)</td>
+          </tr>
+          <tr style="background:var(--green-pale); font-weight:700;">
+            <td><strong>Taxable Income</strong></td>
+            <td id="pf-taxable-ns" style="text-align:right;">£32,430</td>
+            <td id="pf-taxable-sav" style="text-align:right;">£1,200</td>
+            <td id="pf-taxable-div" style="text-align:right;">£3,500</td>
+            <td id="pf-taxable-tot" style="text-align:right; color:var(--green-deep);">£37,130</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; flex-wrap:wrap; gap:0.5rem;">
+      <button class="quickfire-btn" onclick="PROFORMA_GRID.checkIT()" style="padding:0.6rem 1.2rem;">✓ Check Pro-Forma Sums</button>
+      <div id="pf-it-status" style="font-weight:700; font-size:0.9rem; color:var(--green-deep);">Status: Enter values above</div>
+    </div>
+  </div>
+
     <h2 class="part-title">Part 95: Official ACCA Specimen Exam — Section C Constructed Response Q31 & Q32</h2>
     <p class="part-subtitle">Specimen 10-mark and 15-mark constructed response scenarios with full marking schemes.</p>
   </div>
+  <!-- SECTION C EXCEL WORKBOOK INTEGRATION -->
+  <div class="card" style="background: linear-gradient(135deg, #10b98115, #04785715); border: 2px solid var(--green); border-radius: 10px; padding: 1.2rem 1.5rem; margin: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div style="flex: 1; min-width: 280px;">
+      <h3 style="color: var(--green-deep); margin-bottom: 0.3rem; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>📊</span> ACCA Section C Companion Excel Workbook (FA2025)
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--ink-soft); margin: 0;">
+        Practice constructed-response pro-formas in official ACCA CBE spreadsheet format. Includes automated calculation checks, mark schemes, and model solutions.
+      </p>
+    </div>
+    <a href="TX-UK_SectionC_Practice_Pack_FA2025.xlsx" download="TX-UK_SectionC_Practice_Pack_FA2025.xlsx" class="quickfire-btn" style="background: var(--green-deep); color: white; text-decoration: none; padding: 0.65rem 1.2rem; font-size: 0.88rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700;">
+      <span>📥 Download Companion Excel Pack (.xlsx)</span>
+    </a>
+  </div>
+
 
   <div class="card" id="sq31">
     <div class="drill-header">
@@ -22404,6 +23150,21 @@ Total Income Tax Liability:                 £18,182
     <h2 class="part-title">Part 96: Official ACCA Specimen Exam — Section C Question Q33 & Debrief</h2>
     <p class="part-subtitle">Specimen 15-mark Corporation Tax constructed response scenario and tutor debrief.</p>
   </div>
+  <!-- SECTION C EXCEL WORKBOOK INTEGRATION -->
+  <div class="card" style="background: linear-gradient(135deg, #10b98115, #04785715); border: 2px solid var(--green); border-radius: 10px; padding: 1.2rem 1.5rem; margin: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div style="flex: 1; min-width: 280px;">
+      <h3 style="color: var(--green-deep); margin-bottom: 0.3rem; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>📊</span> ACCA Section C Companion Excel Workbook (FA2025)
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--ink-soft); margin: 0;">
+        Practice constructed-response pro-formas in official ACCA CBE spreadsheet format. Includes automated calculation checks, mark schemes, and model solutions.
+      </p>
+    </div>
+    <a href="TX-UK_SectionC_Practice_Pack_FA2025.xlsx" download="TX-UK_SectionC_Practice_Pack_FA2025.xlsx" class="quickfire-btn" style="background: var(--green-deep); color: white; text-decoration: none; padding: 0.65rem 1.2rem; font-size: 0.88rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700;">
+      <span>📥 Download Companion Excel Pack (.xlsx)</span>
+    </a>
+  </div>
+
 
   <div class="card" id="sq33">
     <div class="drill-header">
@@ -22625,12 +23386,210 @@ Standard rate: 20% | Registration limit: £90,000 | Deregistration limit: £88,0
 
 <!-- TAX RATES REFERENCE DRAWER -->
 <button class="tax-drawer-toggle-btn" onclick="TAX_DRAWER.toggle()" title="Toggle Statutory Tax Rates Panel">📋 Tax Rates</button>
+
+<!-- FLOATING CBE CALCULATOR (ACCA WORKSPACE TOOL) -->
+<div class="cbe-calc-widget hidden" id="cbe-calculator-widget">
+  <div class="cbe-calc-header" id="cbe-calc-header-bar">
+    <span>🧮 ACCA CBE Calculator</span>
+    <div>
+      <button onclick="CBE_CALCULATOR.toggleMinimize()" style="background:none; border:none; color:#94a3b8; cursor:pointer; margin-right:4px;">_</button>
+      <button onclick="CBE_CALCULATOR.toggle()" style="background:none; border:none; color:#94a3b8; cursor:pointer;">✕</button>
+    </div>
+  </div>
+  <div class="cbe-calc-body">
+    <div class="cbe-calc-display">
+      <div class="cbe-calc-display-sub" id="cbe-calc-sub-display"></div>
+      <div id="cbe-calc-main-display">0</div>
+    </div>
+    <div class="cbe-calc-grid">
+      <button class="cbe-calc-btn mem-btn" onclick="CBE_CALCULATOR.memClear()">MC</button>
+      <button class="cbe-calc-btn mem-btn" onclick="CBE_CALCULATOR.memRecall()">MR</button>
+      <button class="cbe-calc-btn mem-btn" onclick="CBE_CALCULATOR.memAdd()">M+</button>
+      <button class="cbe-calc-btn mem-btn" onclick="CBE_CALCULATOR.memSub()">M-</button>
+      
+      <button class="cbe-calc-btn clear-btn" onclick="CBE_CALCULATOR.clearAll()">C</button>
+      <button class="cbe-calc-btn clear-btn" onclick="CBE_CALCULATOR.clearEntry()">CE</button>
+      <button class="cbe-calc-btn op-btn" onclick="CBE_CALCULATOR.backspace()">⌫</button>
+      <button class="cbe-calc-btn op-btn" onclick="CBE_CALCULATOR.appendOp('/')">÷</button>
+      
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('7')">7</button>
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('8')">8</button>
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('9')">9</button>
+      <button class="cbe-calc-btn op-btn" onclick="CBE_CALCULATOR.appendOp('*')">×</button>
+      
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('4')">4</button>
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('5')">5</button>
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('6')">6</button>
+      <button class="cbe-calc-btn op-btn" onclick="CBE_CALCULATOR.appendOp('-')">-</button>
+      
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('1')">1</button>
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('2')">2</button>
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('3')">3</button>
+      <button class="cbe-calc-btn op-btn" onclick="CBE_CALCULATOR.appendOp('+')">+</button>
+      
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.toggleSign()">±</button>
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendNum('0')">0</button>
+      <button class="cbe-calc-btn" onclick="CBE_CALCULATOR.appendDot()">.</button>
+      <button class="cbe-calc-btn eq-btn" onclick="CBE_CALCULATOR.calculate()">=</button>
+    </div>
+      </div><!-- End drawer-rates-content -->
+
+    <div id="drawer-calcs-content" style="display:none;">
+      <!-- CT MARGINAL RELIEF CALCULATOR -->
+      <div class="tax-calc-box">
+        <h4 style="color:var(--green); font-size:0.85rem; margin-bottom:0.4rem;">📊 CT Marginal Relief Calculator (FA2025)</h4>
+        <div class="tax-calc-row">
+          <label>Taxable Profits (£):</label>
+          <input type="number" id="ct-calc-p" class="tax-calc-input" value="150000" oninput="TAX_CALCULATORS.calcCT()">
+        </div>
+        <div class="tax-calc-row">
+          <label>Augmented Profits (£):</label>
+          <input type="number" id="ct-calc-ap" class="tax-calc-input" value="150000" oninput="TAX_CALCULATORS.calcCT()">
+        </div>
+        <div class="tax-calc-res" id="ct-calc-res">CT Payable: £32,250 (Effective: 21.50%)</div>
+      </div>
+
+      <!-- PERSONAL ALLOWANCE TAPER CALCULATOR -->
+      <div class="tax-calc-box">
+        <h4 style="color:var(--green); font-size:0.85rem; margin-bottom:0.4rem;">👤 PA Taper Calculator</h4>
+        <div class="tax-calc-row">
+          <label>Adjusted Net Income (£):</label>
+          <input type="number" id="pa-calc-ani" class="tax-calc-input" value="110000" oninput="TAX_CALCULATORS.calcPA()">
+        </div>
+        <div class="tax-calc-res" id="pa-calc-res">Tapered Personal Allowance: £7,570</div>
+      </div>
+
+      <!-- CAR BENEFIT CALCULATOR -->
+      <div class="tax-calc-box">
+        <h4 style="color:var(--green); font-size:0.85rem; margin-bottom:0.4rem;">🚗 Company Car Benefit Calculator</h4>
+        <div class="tax-calc-row">
+          <label>List Price (£):</label>
+          <input type="number" id="car-calc-price" class="tax-calc-input" value="30000" oninput="TAX_CALCULATORS.calcCar()">
+        </div>
+        <div class="tax-calc-row">
+          <label>CO₂ Emissions (g/km):</label>
+          <input type="number" id="car-calc-co2" class="tax-calc-input" value="115" oninput="TAX_CALCULATORS.calcCar()">
+        </div>
+        <div class="tax-calc-res" id="car-calc-res">Taxable Benefit: £8,400 (28%)</div>
+      </div>
+
+      <!-- CGT PRR CALCULATOR -->
+      <div class="tax-calc-box">
+        <h4 style="color:var(--green); font-size:0.85rem; margin-bottom:0.4rem;">🏠 CGT PRR Residence Calculator</h4>
+        <div class="tax-calc-row">
+          <label>Total Gain (£):</label>
+          <input type="number" id="prr-calc-gain" class="tax-calc-input" value="120000" oninput="TAX_CALCULATORS.calcPRR()">
+        </div>
+        <div class="tax-calc-row">
+          <label>Ownership (Months):</label>
+          <input type="number" id="prr-calc-tot-m" class="tax-calc-input" value="120" oninput="TAX_CALCULATORS.calcPRR()">
+        </div>
+        <div class="tax-calc-row">
+          <label>Residence (Months):</label>
+          <input type="number" id="prr-calc-res-m" class="tax-calc-input" value="90" oninput="TAX_CALCULATORS.calcPRR()">
+        </div>
+        <div class="tax-calc-res" id="prr-calc-res">Exempt PRR: £99,000 | Taxable: £21,000</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLASHCARDS MODAL -->
+<div class="cbe-modal" id="flashcard-modal">
+  <div class="cbe-modal-content">
+    <div class="cbe-modal-header">
+      <div class="cbe-modal-title">📇 ACCA TX-UK FA2025 Core Concept Flashcards</div>
+      <button class="cbe-modal-close" onclick="FLASHCARDS.close()">✕</button>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; font-size:0.82rem;">
+      <span id="flashcard-counter" style="font-weight:600; color:var(--green);">Card 1 of 20</span>
+      <span id="flashcard-category" style="background:var(--green-pale); color:var(--green-deep); padding:0.2rem 0.5rem; border-radius:4px; font-weight:600;">Income Tax</span>
+    </div>
+    
+    <div class="flashcard-wrapper" id="flashcard-wrapper" onclick="FLASHCARDS.flip()">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div style="font-size:0.75rem; color:var(--ink-soft); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Question / Concept</div>
+          <div id="flashcard-q-text" style="font-size:1.1rem; font-weight:700;">Loading Flashcards...</div>
+          <div style="font-size:0.75rem; color:var(--green); margin-top:1rem; text-decoration:underline;">Click to Flip Answer 🔄</div>
+        </div>
+        <div class="flashcard-back">
+          <div style="font-size:0.75rem; color:var(--green-deep); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">FA2025 Statutory Rule</div>
+          <div id="flashcard-a-text" style="font-size:1rem; font-weight:600; line-height:1.5;">Answer explanation...</div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; margin-top:1rem;">
+      <button class="hud-btn-sm" onclick="FLASHCARDS.prev()" style="padding:0.5rem 1rem;">◄ Prev</button>
+      <div style="display:flex; gap:0.4rem;">
+        <button class="hud-btn-sm" onclick="FLASHCARDS.rate('hard')" style="background:#fee2e2; color:#991b1b; border-color:#fca5a5;">🔴 Hard (1d)</button>
+        <button class="hud-btn-sm" onclick="FLASHCARDS.rate('medium')" style="background:#fef3c7; color:#92400e; border-color:#fcd34d;">🟡 Medium (2d)</button>
+        <button class="hud-btn-sm" onclick="FLASHCARDS.rate('easy')" style="background:#dcfce7; color:#166534; border-color:#86efac;">🟢 Easy (4d)</button>
+      </div>
+      <button class="hud-btn-sm" onclick="FLASHCARDS.next()" style="padding:0.5rem 1rem;">Next ►</button>
+    </div>
+  </div>
+</div>
+
+<!-- DEADLINES MATCHING GAME MODAL -->
+<div class="cbe-modal" id="deadlines-game-modal">
+  <div class="cbe-modal-content">
+    <div class="cbe-modal-header">
+      <div class="cbe-modal-title">🎯 Tax Return & Payment Deadlines Matching Game</div>
+      <button class="cbe-modal-close" onclick="DEADLINES_GAME.close()">✕</button>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; margin-bottom:0.8rem; background:var(--card); padding:0.5rem 0.8rem; border-radius:6px; border:1px solid var(--line);">
+      <span>Matches: <strong id="game-matches-count" style="color:var(--green);">0 / 8</strong></span>
+      <span>Score: <strong id="game-score-val" style="color:var(--green);">0 XP</strong></span>
+      <button class="hud-btn-sm" onclick="DEADLINES_GAME.reset()">🔄 Reset Game</button>
+    </div>
+    <p style="font-size:0.8rem; color:var(--ink-soft); margin-bottom:0.5rem;">Click an obligation on the left, then click its corresponding FA2025 statutory deadline on the right!</p>
+    
+    <div class="matching-grid">
+      <div class="matching-col" id="game-obligations-col"></div>
+      <div class="matching-col" id="game-deadlines-col"></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYBOARD SHORTCUTS MODAL -->
+<div class="cbe-modal" id="shortcuts-modal">
+  <div class="cbe-modal-content" style="max-width:480px;">
+    <div class="cbe-modal-header">
+      <div class="cbe-modal-title">⌨️ CBE Workspace Keyboard Shortcuts</div>
+      <button class="cbe-modal-close" onclick="KEYBOARD_SHORTCUTS.close()">✕</button>
+    </div>
+    <table class="fiscal-table" style="font-size:0.85rem;">
+      <thead>
+        <tr><th>Shortcut Key</th><th>Action / Workspace Tool</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd>Ctrl + [</kbd></td><td>Toggle Topic Navigation Sidebar</td></tr>
+        <tr><td><kbd>Ctrl + ]</kbd></td><td>Toggle Statutory Tax Rates Drawer</td></tr>
+        <tr><td><kbd>Alt + C</kbd></td><td>Toggle CBE Floating Calculator</td></tr>
+        <tr><td><kbd>Alt + S</kbd></td><td>Toggle Scratchpad Notes Box</td></tr>
+        <tr><td><kbd>Alt + F</kbd></td><td>Open Core Concept Flashcards</td></tr>
+        <tr><td><kbd>Ctrl + /</kbd></td><td>Open Keyboard Shortcuts Menu</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Close Active Modal / Drawer</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 <div class="tax-drawer" id="tax-drawer">
   <div class="tax-drawer-header">
     <span>📋 FA2025 Tax Rates</span>
     <button onclick="TAX_DRAWER.toggle()" style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">✕</button>
   </div>
   <div class="tax-drawer-body">
+    <div style="margin-bottom:0.8rem;">
+      <input type="text" id="tax-drawer-search" placeholder="🔍 Search allowances, rates, thresholds..." oninput="TAX_DRAWER.filter(this.value)" style="width:100%; padding:0.4rem 0.6rem; border:1px solid var(--line-strong); border-radius:5px; font-size:0.8rem;">
+    </div>
+    <div class="drawer-tabs">
+      <button class="drawer-tab-btn active" id="tab-rates-btn" onclick="TAX_DRAWER.switchTab('rates')">📋 Rate Tables</button>
+      <button class="drawer-tab-btn" id="tab-calcs-btn" onclick="TAX_DRAWER.switchTab('calcs')">🧮 Live Calculators</button>
+    </div>
+    <div id="drawer-rates-content">
     <h3 style="color:var(--green); border-bottom:1px solid var(--line); padding-bottom:0.3rem; margin-bottom:0.5rem; font-size:1rem;">Income Tax</h3>
     <table class="fiscal-table" style="font-size:0.75rem; margin-bottom:0.8rem;">
       <thead>
@@ -22919,7 +23878,76 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="card">
     <h3>📌 FLAGGED QUESTIONS FOR REVIEW</h3>
     <p style="margin-bottom:0.75rem; font-size:0.9rem;">Your pinned/flagged questions appear here for direct review and re-attempting.</p>
-    <div id="flagged-questions-list"></div>
+    
+    <!-- DYNAMIC CATEGORY MASTERY & WEAKNESS DIAGNOSTICS (SUBPHASE 11.2 & 11.5) -->
+    <div style="margin-top: 1.8rem; padding: 1.2rem; background: var(--paper-deep); border-radius: 8px; border: 1px solid var(--line-strong);">
+      <h3 style="font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>📊</span> Syllabus Category Mastery & Accuracy Map
+      </h3>
+      <p style="font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 0.8rem;">
+        Real-time tracking across official ACCA TX-UK exam syllabus domains.
+      </p>
+
+      <div class="category-mastery-grid">
+        <div class="cat-mastery-card">
+          <div class="cat-mastery-header">
+            <span>🟢 Income Tax & NIC</span>
+            <span id="cat-acc-it">0%</span>
+          </div>
+          <div class="cat-progress-bg">
+            <div class="cat-progress-fill" id="cat-fill-it" style="background:var(--green);"></div>
+          </div>
+        </div>
+
+        <div class="cat-mastery-card">
+          <div class="cat-mastery-header">
+            <span>🔵 Chargeable Gains</span>
+            <span id="cat-acc-cgt">0%</span>
+          </div>
+          <div class="cat-progress-bg">
+            <div class="cat-progress-fill" id="cat-fill-cgt" style="background:#0284c7;"></div>
+          </div>
+        </div>
+
+        <div class="cat-mastery-card">
+          <div class="cat-mastery-header">
+            <span>🟣 Inheritance Tax</span>
+            <span id="cat-acc-iht">0%</span>
+          </div>
+          <div class="cat-progress-bg">
+            <div class="cat-progress-fill" id="cat-fill-iht" style="background:#7c3aed;"></div>
+          </div>
+        </div>
+
+        <div class="cat-mastery-card">
+          <div class="cat-mastery-header">
+            <span>🟠 Corporation Tax</span>
+            <span id="cat-acc-ct">0%</span>
+          </div>
+          <div class="cat-progress-bg">
+            <div class="cat-progress-fill" id="cat-fill-ct" style="background:#ea580c;"></div>
+          </div>
+        </div>
+
+        <div class="cat-mastery-card">
+          <div class="cat-mastery-header">
+            <span>🔴 Value Added Tax</span>
+            <span id="cat-acc-vat">0%</span>
+          </div>
+          <div class="cat-progress-bg">
+            <div class="cat-progress-fill" id="cat-fill-vat" style="background:#dc2626;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem; padding:0.8rem; background:var(--card); border-radius:6px; border:1px solid var(--line); font-size:0.82rem;">
+        <strong>🎯 Recommended Study Focus:</strong>
+        <span id="weak-topic-recommendation" style="color:var(--green-deep); font-weight:600; margin-left:0.4rem;">
+          Complete practice drills in the Vault (#part-90b) to generate personalized topic diagnostics!
+        </span>
+      </div>
+    </div>
+<div id="flagged-questions-list"></div>
   </div>
 
   <div class="card">
@@ -22997,5 +24025,637 @@ document.addEventListener('DOMContentLoaded', () => {
   updateDash();
   document.addEventListener('change', (e) => { if (e.target.type === 'checkbox') setTimeout(updateDash, 200); });
 });
+
+/* ═══════════════════════════════════════════════════════════════
+   CBE WORKSPACE TOOLS, FLASHCARDS, DEADLINES GAME & JS ENGINE
+   ═══════════════════════════════════════════════════════════════ */
+
+const CBE_CALCULATOR = {
+  displayVal: '0',
+  subDisplayVal: '',
+  memoryVal: 0,
+  isMinimized: false,
+  isVisible: false,
+
+  toggle() {
+    const el = document.getElementById('cbe-calculator-widget');
+    if (!el) return;
+    this.isVisible = !this.isVisible;
+    if (this.isVisible) {
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+    }
+  },
+
+  toggleMinimize() {
+    const el = document.getElementById('cbe-calculator-widget');
+    if (!el) return;
+    this.isMinimized = !this.isMinimized;
+    if (this.isMinimized) {
+      el.classList.add('minimized');
+    } else {
+      el.classList.remove('minimized');
+    }
+  },
+
+  updateDisplay() {
+    document.getElementById('cbe-calc-main-display').textContent = this.displayVal;
+    document.getElementById('cbe-calc-sub-display').textContent = this.subDisplayVal;
+  },
+
+  appendNum(n) {
+    if (this.displayVal === '0' || this.displayVal === 'Error') {
+      this.displayVal = n;
+    } else {
+      this.displayVal += n;
+    }
+    this.updateDisplay();
+  },
+
+  appendDot() {
+    if (!this.displayVal.includes('.')) {
+      this.displayVal += '.';
+      this.updateDisplay();
+    }
+  },
+
+  appendOp(op) {
+    this.subDisplayVal = this.displayVal + ' ' + op + ' ';
+    this.displayVal = '0';
+    this.updateDisplay();
+  },
+
+  clearAll() {
+    this.displayVal = '0';
+    this.subDisplayVal = '';
+    this.updateDisplay();
+  },
+
+  clearEntry() {
+    this.displayVal = '0';
+    this.updateDisplay();
+  },
+
+  backspace() {
+    if (this.displayVal.length > 1) {
+      this.displayVal = this.displayVal.slice(0, -1);
+    } else {
+      this.displayVal = '0';
+    }
+    this.updateDisplay();
+  },
+
+  toggleSign() {
+    if (this.displayVal !== '0' && this.displayVal !== 'Error') {
+      if (this.displayVal.startsWith('-')) {
+        this.displayVal = this.displayVal.slice(1);
+      } else {
+        this.displayVal = '-' + this.displayVal;
+      }
+      this.updateDisplay();
+    }
+  },
+
+  calculate() {
+    if (!this.subDisplayVal) return;
+    try {
+      const expr = this.subDisplayVal + this.displayVal;
+      const cleanExpr = expr.replace(/×/g, '*').replace(/÷/g, '/');
+      const res = eval(cleanExpr);
+      this.subDisplayVal = expr + ' =';
+      this.displayVal = String(Math.round(res * 10000) / 10000);
+    } catch(e) {
+      this.displayVal = 'Error';
+    }
+    this.updateDisplay();
+  },
+
+  memClear() { this.memoryVal = 0; },
+  memRecall() { this.displayVal = String(this.memoryVal); this.updateDisplay(); },
+  memAdd() { this.memoryVal += parseFloat(this.displayVal) || 0; },
+  memSub() { this.memoryVal -= parseFloat(this.displayVal) || 0; }
+};
+
+const FLASHCARDS = {
+  currentIndex: 0,
+  cards: [
+    { cat: 'Income Tax', q: 'What is the FA2025 standard Personal Allowance and its tapering threshold?', a: 'Standard PA is £12,570. It tapers by £1 for every £2 of Adjusted Net Income (ANI) over £100,000 (fully lost at £125,140).' },
+    { cat: 'Income Tax', q: 'What are the FA2025 savings nil rate bands for basic and higher rate taxpayers?', a: 'Basic rate (20%): £1,000 PSA at 0%.
+Higher rate (40%): £500 PSA at 0%.
+Additional rate (45%): £0 PSA.' },
+    { cat: 'Corporation Tax', q: 'What are the CT rates and Marginal Relief fraction for FA2025?', a: 'Small profits rate (≤ £50,000): 19%.
+Main rate (≥ £250,000): 25%.
+Marginal relief fraction: 3/200ths.' },
+    { cat: 'Capital Allowances', q: 'What is the FA2025 Annual Investment Allowance (AIA) limit?', a: '£1,000,000 per annum for qualifying plant and machinery.' },
+    { cat: 'Chargeable Gains', q: 'What is the CGT Annual Exempt Amount (AEA) for individuals in FA2025?', a: '£3,000 for individuals.' },
+    { cat: 'Chargeable Gains', q: 'What is the CGT Business Asset Disposal Relief (BADR) lifetime limit and tax rate?', a: 'Lifetime limit: £1,000,000 qualifying gains taxed at a reduced CGT rate of 10%.' },
+    { cat: 'Inheritance Tax', q: 'What are the Nil Rate Band (NRB) and Residence Nil Rate Band (RNRB) limits?', a: 'NRB: £325,000.
+RNRB: £175,000 (applies when main residence is passed to direct descendants).' },
+    { cat: 'Inheritance Tax', q: 'What is the IHT rate on lifetime chargeable transfers (PETs vs CLT)?', a: 'PETs: 0% at time of gift (taxable only if donor dies within 7 years).
+CLT (into trust): 20% lifetime tax on excess over NRB (25% if paid by donor).' },
+    { cat: 'Value Added Tax', q: 'What are the FA2025 VAT registration and deregistration thresholds?', a: 'Registration threshold: £90,000 (taxable turnover in 12 months).
+Deregistration threshold: £88,000.' },
+    { cat: 'Admin & Deadlines', q: 'What are the statutory filing deadlines for individual tax returns?', a: 'Paper return: 31 October following tax year.
+Online return: 31 January following tax year.' },
+    { cat: 'Employment Income', q: 'What is the van fuel scale charge for FA2025?', a: '£769 per annum where private fuel is provided for a company van.' },
+    { cat: 'Property Income', q: 'What is the Lease Premium taxable trading/property income formula?', a: 'Taxable Premium = Premium × [51 - (N - 1)] / 50, where N is lease length in years.' },
+    { cat: 'National Insurance', q: 'What are the Class 1 Employee NIC rates for FA2025?', a: 'Primary threshold to UEL (£12,570 to £50,270): 8%.
+Above UEL (£50,270): 2%.' },
+    { cat: 'National Insurance', q: 'What are the Class 4 Self-Employed NIC rates for FA2025?', a: 'Lower Profits Limit to UPL (£12,570 to £50,270): 6%.
+Above UPL (£50,270): 2%.' },
+    { cat: 'Corporation Tax', q: 'How is CT Marginal Relief calculated formula-wise?', a: 'Marginal Relief = 3/200 × (Upper Limit - Augmented Profits) × (Taxable Profits / Augmented Profits).' },
+    { cat: 'Pensions', q: 'What is the FA2025 pension Annual Allowance and its tapering formula?', a: 'Annual Allowance: £60,000. Tapers by £1 for every £2 of Adjusted Income over £260,000 down to a minimum of £10,000.' },
+    { cat: 'Chargeable Gains', q: 'What is the Private Residence Relief (PRR) deemed occupation final period rule?', a: 'The final 9 months of ownership are ALWAYS treated as deemed occupation if the property was ever the main residence.' },
+    { cat: 'Value Added Tax', q: 'What is the statutory deadline for reporting and paying CGT on UK residential land sales?', a: '60 days from completion date.' },
+    { cat: 'Admin & Deadlines', q: 'When are individual Payments on Account (PoA) due?', a: '1st PoA: 31 January in tax year.
+2nd PoA: 31 July following tax year.
+Balancing payment & CGT: 31 January following tax year.' },
+    { cat: 'Ethics & GAAR', q: 'What are the five fundamental principles of the ACCA Code of Ethics?', a: 'Integrity, Objectivity, Professional Competence & Due Care, Confidentiality, Professional Behavior.' }
+  ],
+
+  open() {
+    document.getElementById('flashcard-modal').classList.add('open');
+    this.render();
+  },
+
+  close() {
+    document.getElementById('flashcard-modal').classList.remove('open');
+  },
+
+  flip() {
+    document.getElementById('flashcard-wrapper').classList.toggle('flipped');
+  },
+
+  render() {
+    const card = this.cards[this.currentIndex];
+    document.getElementById('flashcard-q-text').textContent = card.q;
+    document.getElementById('flashcard-a-text').textContent = card.a;
+    document.getElementById('flashcard-category').textContent = card.cat;
+    document.getElementById('flashcard-counter').textContent = `Card ${this.currentIndex + 1} of ${this.cards.length}`;
+    document.getElementById('flashcard-wrapper').classList.remove('flipped');
+  },
+
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+    this.render();
+  },
+
+  prev() {
+    this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
+    this.render();
+  },
+
+  rate(level) {
+    if (typeof GAMIFICATION !== 'undefined') {
+      GAMIFICATION.addXP(5);
+    }
+    this.next();
+  }
+};
+
+const DEADLINES_GAME = {
+  score: 0,
+  matches: 0,
+  selectedObligation: null,
+  
+  items: [
+    { id: 'item-1', name: 'Paper Tax Return (Individual)', deadline: '31 October 2026' },
+    { id: 'item-2', name: 'Online Tax Return & Balancing Payment', deadline: '31 January 2027' },
+    { id: 'item-3', name: 'Company Tax Return (CT600)', deadline: '12 months after AP end' },
+    { id: 'item-4', name: 'UK Residential Property CGT Return', deadline: '60 days from completion' },
+    { id: 'item-5', name: 'Quarterly VAT Return & Payment', deadline: '1 month + 7 days' },
+    { id: 'item-6', name: 'First Individual Payment on Account', deadline: '31 January in tax year' },
+    { id: 'item-7', name: 'Second Individual Payment on Account', deadline: '31 July after tax year' },
+    { id: 'item-8', name: 'CLT Lifetime IHT Return (made 1 Nov-30 Apr)', deadline: '30 April following' }
+  ],
+
+  open() {
+    document.getElementById('deadlines-game-modal').classList.add('open');
+    this.reset();
+  },
+
+  close() {
+    document.getElementById('deadlines-game-modal').classList.remove('open');
+  },
+
+  reset() {
+    this.score = 0;
+    this.matches = 0;
+    this.selectedObligation = null;
+    document.getElementById('game-matches-count').textContent = '0 / 8';
+    document.getElementById('game-score-val').textContent = '0 XP';
+    
+    // Render obligations
+    const obsCol = document.getElementById('game-obligations-col');
+    const deadCol = document.getElementById('game-deadlines-col');
+    
+    let obsHtml = '';
+    this.items.forEach(item => {
+      obsHtml += `<div class="matching-card" id="ob-${item.id}" onclick="DEADLINES_GAME.selectObligation('${item.id}')">${item.name}</div>`;
+    });
+    obsCol.innerHTML = obsHtml;
+
+    // Shuffle deadlines
+    const shuffledDeadlines = [...this.items].map(i => ({ id: i.id, text: i.deadline })).sort(() => Math.random() - 0.5);
+    let deadHtml = '';
+    shuffledDeadlines.forEach(item => {
+      deadHtml += `<div class="matching-card" id="dl-${item.id}" onclick="DEADLINES_GAME.selectDeadline('${item.id}')">${item.text}</div>`;
+    });
+    deadCol.innerHTML = deadHtml;
+  },
+
+  selectObligation(id) {
+    document.querySelectorAll('#game-obligations-col .matching-card').forEach(el => el.classList.remove('selected'));
+    const el = document.getElementById('ob-' + id);
+    if (el && !el.classList.contains('matched')) {
+      el.classList.add('selected');
+      this.selectedObligation = id;
+    }
+  },
+
+  selectDeadline(id) {
+    if (!this.selectedObligation) return;
+    const obEl = document.getElementById('ob-' + this.selectedObligation);
+    const dlEl = document.getElementById('dl-' + id);
+    
+    if (this.selectedObligation === id) {
+      // Correct Match!
+      obEl.classList.remove('selected');
+      obEl.classList.add('matched');
+      dlEl.classList.add('matched');
+      this.matches++;
+      this.score += 25;
+      document.getElementById('game-matches-count').textContent = `${this.matches} / 8`;
+      document.getElementById('game-score-val').textContent = `${this.score} XP`;
+      if (typeof GAMIFICATION !== 'undefined') GAMIFICATION.addXP(25);
+      this.selectedObligation = null;
+      if (this.matches === 8) {
+        setTimeout(() => alert('🎉 CONGRATULATIONS! You matched all statutory FA2025 deadlines perfectly! +200 XP Bonus!'), 300);
+        if (typeof GAMIFICATION !== 'undefined') GAMIFICATION.addXP(200);
+      }
+    } else {
+      // Wrong Match
+      dlEl.style.borderColor = 'var(--red)';
+      setTimeout(() => dlEl.style.borderColor = '', 500);
+    }
+  }
+};
+
+const TAX_DRAWER = {
+  toggle() {
+    const el = document.getElementById('tax-drawer');
+    if (el) el.classList.toggle('open');
+  },
+  
+  switchTab(tab) {
+    document.getElementById('tab-rates-btn').classList.toggle('active', tab === 'rates');
+    document.getElementById('tab-calcs-btn').classList.toggle('active', tab === 'calcs');
+    document.getElementById('drawer-rates-content').style.display = tab === 'rates' ? 'block' : 'none';
+    document.getElementById('drawer-calcs-content').style.display = tab === 'calcs' ? 'block' : 'none';
+  },
+
+  filter(query) {
+    const q = query.toLowerCase();
+    const rows = document.querySelectorAll('#drawer-rates-content tbody tr, #drawer-rates-content p');
+    rows.forEach(r => {
+      if (r.textContent.toLowerCase().includes(q)) {
+        r.style.display = '';
+      } else {
+        r.style.display = 'none';
+      }
+    });
+  }
+};
+
+const TAX_CALCULATORS = {
+  calcCT() {
+    const p = parseFloat(document.getElementById('ct-calc-p').value) || 0;
+    const ap = parseFloat(document.getElementById('ct-calc-ap').value) || p;
+    let tax = 0;
+    if (ap <= 50000) {
+      tax = p * 0.19;
+    } else if (ap >= 250000) {
+      tax = p * 0.25;
+    } else {
+      const fullTax = p * 0.25;
+      const mr = (3/200) * (250000 - ap) * (p / ap);
+      tax = fullTax - mr;
+    }
+    const effRate = p > 0 ? (tax / p) * 100 : 0;
+    document.getElementById('ct-calc-res').textContent = `CT Payable: £${Math.round(tax).toLocaleString()} (Effective: ${effRate.toFixed(2)}%)`;
+  },
+
+  calcPA() {
+    const ani = parseFloat(document.getElementById('pa-calc-ani').value) || 0;
+    let pa = 12570;
+    if (ani > 100000) {
+      pa = Math.max(0, 12570 - Math.floor((ani - 100000) / 2));
+    }
+    document.getElementById('pa-calc-res').textContent = `Tapered Personal Allowance: £${pa.toLocaleString()}`;
+  },
+
+  calcCar() {
+    const price = parseFloat(document.getElementById('car-calc-price').value) || 0;
+    const co2 = parseFloat(document.getElementById('car-calc-co2').value) || 0;
+    let pct = 0;
+    if (co2 === 0) pct = 2;
+    else if (co2 <= 50) pct = 2;
+    else if (co2 <= 54) pct = 15;
+    else {
+      pct = 15 + Math.floor((co2 - 50) / 5);
+      if (pct > 37) pct = 37;
+    }
+    const benefit = price * (pct / 100);
+    document.getElementById('car-calc-res').textContent = `Taxable Benefit: £${Math.round(benefit).toLocaleString()} (${pct}%)`;
+  },
+
+  calcPRR() {
+    const gain = parseFloat(document.getElementById('prr-calc-gain').value) || 0;
+    const totM = parseFloat(document.getElementById('prr-calc-tot-m').value) || 1;
+    const resM = parseFloat(document.getElementById('prr-calc-res-m').value) || 0;
+    const finalM = Math.min(9, totM - resM);
+    const qualM = Math.min(totM, resM + Math.max(0, finalM));
+    const prr = gain * (qualM / totM);
+    const taxable = Math.max(0, gain - prr);
+    document.getElementById('prr-calc-res').textContent = `Exempt PRR: £${Math.round(prr).toLocaleString()} | Taxable: £${Math.round(taxable).toLocaleString()}`;
+  }
+};
+
+const KEYBOARD_SHORTCUTS = {
+  open() { document.getElementById('shortcuts-modal').classList.add('open'); },
+  close() { document.getElementById('shortcuts-modal').classList.remove('open'); }
+};
+
+const FONT_SIZER = {
+  currScale: 1.0,
+  change(delta) {
+    this.currScale = Math.min(1.3, Math.max(0.85, this.currScale + delta));
+    document.documentElement.style.setProperty('--body-font-size', (0.95 * this.currScale) + 'rem');
+  },
+  reset() {
+    this.currScale = 1.0;
+    document.documentElement.style.setProperty('--body-font-size', '0.95rem');
+  }
+};
+
+const STATE_EXPORT_IMPORT = {
+  exportState() {
+    const state = {
+      version: 'FA2025_v1',
+      date: new Date().toISOString(),
+      xp: GAMIFICATION.totalXP,
+      completed: Array.from(GAMIFICATION.completedTasks),
+      flagged: Array.from(FLAG_SYSTEM.flagged),
+      scratchpad: localStorage.getItem('TX_PRACTICE_SCRATCHPAD_VAL') || ''
+    };
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ACCA_TX_FA2025_Progress_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  },
+
+  importState(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      try {
+        const data = JSON.parse(evt.target.result);
+        if (data.xp !== undefined) {
+          GAMIFICATION.totalXP = data.xp;
+          localStorage.setItem('TX_PRACTICE_TOTAL_XP', data.xp);
+        }
+        if (Array.isArray(data.completed)) {
+          GAMIFICATION.completedTasks = new Set(data.completed);
+          localStorage.setItem('TX_PRACTICE_COMPLETED_TASKS', JSON.stringify(data.completed));
+        }
+        if (Array.isArray(data.flagged)) {
+          FLAG_SYSTEM.flagged = new Set(data.flagged);
+          FLAG_SYSTEM.save();
+        }
+        if (data.scratchpad) {
+          localStorage.setItem('TX_PRACTICE_SCRATCHPAD_VAL', data.scratchpad);
+          SCRATCHPAD.load();
+        }
+        alert('✅ Progress successfully restored!');
+        location.reload();
+      } catch(err) {
+        alert('❌ Invalid JSON save file.');
+      }
+    };
+    reader.readAsText(file);
+  }
+};
+
+// Global Hotkeys Listener
+document.addEventListener('keydown', (e) => {
+  if (e.altKey && (e.key === 'c' || e.key === 'C')) {
+    e.preventDefault();
+    CBE_CALCULATOR.toggle();
+  } else if (e.altKey && (e.key === 'f' || e.key === 'F')) {
+    e.preventDefault();
+    FLASHCARDS.open();
+  } else if (e.ctrlKey && e.key === '/') {
+    e.preventDefault();
+    KEYBOARD_SHORTCUTS.open();
+  } else if (e.key === 'Escape') {
+    document.querySelectorAll('.cbe-modal').forEach(m => m.classList.remove('open'));
+    const drawer = document.getElementById('tax-drawer');
+    if (drawer) drawer.classList.remove('open');
+  }
+});
+
+const PROFORMA_GRID = {
+  calcIT() {
+    const ns = parseFloat(document.getElementById('pf-ns-trade').value) || 0;
+    const sav = parseFloat(document.getElementById('pf-sav-int').value) || 0;
+    const div = parseFloat(document.getElementById('pf-div-inc').value) || 0;
+    const pa = parseFloat(document.getElementById('pf-pa-ded').value) || 0;
+
+    document.getElementById('pf-tot-trade').textContent = `£${ns.toLocaleString()}`;
+    document.getElementById('pf-tot-int').textContent = `£${sav.toLocaleString()}`;
+    document.getElementById('pf-tot-div').textContent = `£${div.toLocaleString()}`;
+    document.getElementById('pf-tot-ns').textContent = `£${ns.toLocaleString()}`;
+    document.getElementById('pf-tot-sav').textContent = `£${sav.toLocaleString()}`;
+    document.getElementById('pf-tot-div-col').textContent = `£${div.toLocaleString()}`;
+    document.getElementById('pf-grand-tot').textContent = `£${(ns + sav + div).toLocaleString()}`;
+    document.getElementById('pf-tot-pa').textContent = `(£${pa.toLocaleString()})`;
+
+    const taxNs = Math.max(0, ns - pa);
+    const paRem = Math.max(0, pa - ns);
+    const taxSav = Math.max(0, sav - paRem);
+    const paRem2 = Math.max(0, paRem - sav);
+    const taxDiv = Math.max(0, div - paRem2);
+
+    document.getElementById('pf-taxable-ns').textContent = `£${taxNs.toLocaleString()}`;
+    document.getElementById('pf-taxable-sav').textContent = `£${taxSav.toLocaleString()}`;
+    document.getElementById('pf-taxable-div').textContent = `£${taxDiv.toLocaleString()}`;
+    document.getElementById('pf-taxable-tot').textContent = `£${(taxNs + taxSav + taxDiv).toLocaleString()}`;
+  },
+
+  checkIT() {
+    this.calcIT();
+    document.getElementById('pf-it-status').textContent = '✅ Pro-Forma Math Verified! +15 XP';
+    if (typeof GAMIFICATION !== 'undefined') GAMIFICATION.addXP(15);
+  },
+
+  calcCT() {
+    const trade = parseFloat(document.getElementById('pf-ct-trade').value) || 0;
+    const ntlr = parseFloat(document.getElementById('pf-ct-ntlr').value) || 0;
+    const prop = parseFloat(document.getElementById('pf-ct-prop').value) || 0;
+    const cgt = parseFloat(document.getElementById('pf-ct-cgt').value) || 0;
+    const qcd = parseFloat(document.getElementById('pf-ct-qcd').value) || 0;
+
+    const totProf = trade + ntlr + prop + cgt;
+    const ttp = Math.max(0, totProf - qcd);
+
+    document.getElementById('pf-ct-tot-prof').textContent = `£${totProf.toLocaleString()}`;
+    document.getElementById('pf-ct-ttp').textContent = `£${ttp.toLocaleString()}`;
+  },
+
+  checkCT() {
+    this.calcCT();
+    document.getElementById('pf-ct-status').textContent = '✅ CT Pro-Forma Verified! +15 XP';
+    if (typeof GAMIFICATION !== 'undefined') GAMIFICATION.addXP(15);
+  }
+};
+
+/* Text Highlighting & Strikethrough Utilities */
+const TEXT_TOOLS = {
+  highlightSelection() {
+    const selection = window.getSelection();
+    if (!selection.rangeCount || selection.isCollapsed) return;
+    const range = selection.getRangeAt(0);
+    const mark = document.createElement('mark');
+    mark.className = 'cbe-highlight';
+    try {
+      range.surroundContents(mark);
+    } catch(e) {
+      alert('Please select text within a single paragraph or card.');
+    }
+  },
+
+  toggleStrikethrough(el) {
+    if (el) el.classList.toggle('strikethrough');
+  }
+};
+
+/* Diagnostic Mastery Engine */
+const MASTERY_ENGINE = {
+  updateMastery() {
+    const cats = ['it', 'cgt', 'iht', 'ct', 'vat'];
+    let minAcc = 100;
+    let minCat = 'Income Tax';
+
+    cats.forEach(cat => {
+      const cards = document.querySelectorAll(`.drill-card[data-category="${cat}"]`);
+      let attempted = 0;
+      let correct = 0;
+      cards.forEach(card => {
+        const checked = card.querySelector('input[type="radio"]:checked');
+        if (checked) {
+          attempted++;
+          const qid = card.id;
+          const qName = checked.name;
+          if (QUIZ_ENGINE.answers[qName] === checked.value) {
+            correct++;
+          }
+        }
+      });
+      const pct = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+      const accEl = document.getElementById(`cat-acc-${cat}`);
+      const fillEl = document.getElementById(`cat-fill-${cat}`);
+      if (accEl) accEl.textContent = `${pct}% (${attempted} solved)`;
+      if (fillEl) fillEl.style.width = `${pct}%`;
+
+      if (pct < minAcc) {
+        minAcc = pct;
+        minCat = cat.toUpperCase();
+      }
+    });
+
+    const recEl = document.getElementById('weak-topic-recommendation');
+    if (recEl) {
+      if (QUIZ_ENGINE.totalAttempted > 0) {
+        recEl.textContent = `Prioritize ${minCat} drills (Current accuracy: ${minAcc}%). Revisit Flashcards (Alt+F) & Tax Rate Tables!`;
+      }
+    }
+  }
+};
+
+// PWA Offline Service Worker Registration (Subphase 15.4)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    const swCode = `
+      self.addEventListener('install', e => e.waitUntil(self.skipWaiting()));
+      self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
+      self.addEventListener('fetch', e => e.respondWith(fetch(e.request).catch(() => caches.match(e.request))));
+    `;
+    const blob = new Blob([swCode], { type: 'application/javascript' });
+    navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
+  });
+}
+
+// Hook into periodic lifecycle
+setInterval(() => {
+  MASTERY_ENGINE.updateMastery();
+}, 2000);
+
+/* Interactive Matrix Evaluation Engine */
+const MATRIX_QUIZ = {
+  checkMatrix(matrixId) {
+    const table = document.getElementById(matrixId);
+    if (!table) return;
+    const rows = table.querySelectorAll('tbody tr');
+    let correctCount = 0;
+    let totalRows = rows.length;
+
+    rows.forEach(row => {
+      const correctVal = row.getAttribute('data-correct');
+      const selected = row.querySelector('input[type="radio"]:checked');
+      row.classList.remove('row-correct', 'row-incorrect');
+      if (selected) {
+        if (selected.value === correctVal) {
+          row.classList.add('row-correct');
+          correctCount++;
+        } else {
+          row.classList.add('row-incorrect');
+        }
+      }
+    });
+
+    const statusEl = document.getElementById(`matrix-status-${matrixId}`);
+    if (statusEl) {
+      if (correctCount === totalRows) {
+        statusEl.textContent = `🎉 Perfect! ${correctCount}/${totalRows} rows correct! +25 XP`;
+        if (typeof GAMIFICATION !== 'undefined') GAMIFICATION.addXP(25);
+      } else {
+        statusEl.textContent = `Scored ${correctCount}/${totalRows} correct. Review highlighted rows!`;
+      }
+    }
+  }
+};
+
+/* Scenario Annotation Helper */
+const SCENARIO_ANNOTATOR = {
+  highlightColor(color) {
+    const sel = window.getSelection();
+    if (!sel.rangeCount || sel.isCollapsed) return;
+    const range = sel.getRangeAt(0);
+    const span = document.createElement('span');
+    span.style.backgroundColor = color;
+    span.style.padding = '0.1em 0.2em';
+    span.style.borderRadius = '3px';
+    try {
+      range.surroundContents(span);
+    } catch(e) {
+      alert('Selection spans across multiple structural blocks.');
+    }
+  }
+};
 </script>
 

@@ -1297,6 +1297,56 @@ mark.cbe-highlight {
 .qf-q { font-size: 1.05rem; color: var(--ink); margin: .8rem 0; line-height: 1.5; }
 .qf-opt.correct { background: var(--green-pale) !important; border: 1px solid var(--green-bright) !important; color: var(--green-deep) !important; }
 .qf-opt.incorrect { background: var(--red-pale) !important; border: 1px solid var(--red) !important; color: var(--red) !important; }
+/* modal visibility (JS uses .show) */
+.qf-modal-overlay.show { display: flex; }
+
+/* ── Dark mode (token remap) ── */
+html[data-theme="dark"] {
+  --ink: #e6efe9;
+  --ink-soft: #b9c9c0;
+  --ink-faint: #8aa296;
+  --paper: #0e1a15;
+  --paper-deep: #15241d;
+  --card: #17261f;
+  --line: #2c4036;
+  --line-strong: #3d574b;
+  --green: #4cd08a;
+  --green-deep: #7fe3ad;
+  --green-bright: #34b875;
+  --green-pale: #143427;
+  --gold: #e0b04a;
+  --gold-bright: #eec257;
+  --gold-pale: #3a2f15;
+  --red: #ef6b60;
+  --red-pale: #3d1f1c;
+  --blue: #7fb0e8;
+  --blue-pale: #1c2f47;
+  --violet: #b49ce0;
+  --violet-pale: #2f2644;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.45);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.45);
+  --shadow-lg: 0 12px 28px rgba(0,0,0,.55);
+}
+html[data-theme="dark"] .case-scenario { border-color: #2c4568; }
+html[data-theme="dark"] .answer-key-line { background: #143427; }
+html[data-theme="dark"] .syllabus-banner { background: linear-gradient(90deg, #0b2a20, #145236); }
+
+/* ── Flashcards ── */
+.flashcard-wrapper { perspective: 1000px; min-height: 260px; margin-bottom: 1rem; }
+.flashcard-inner { position: relative; width: 100%; height: 100%; min-height: 260px; transition: transform .5s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+.flashcard-wrapper.flipped .flashcard-inner { transform: rotateY(180deg); }
+.flashcard-front, .flashcard-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 12px; padding: 1.3rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px solid var(--green-bright); box-sizing: border-box; overflow: auto; text-align: left; }
+.flashcard-front { background: var(--card); color: var(--ink); font-size: .95rem; }
+.flashcard-back { background: var(--green-pale); color: var(--green-deep); transform: rotateY(180deg); font-family: var(--font-mono); font-size: .88rem; }
+.flashcard-opt { font-size: .85rem; margin: .15rem 0; }
+.fc-actions { display: flex; gap: .6rem; justify-content: center; margin-top: .8rem; flex-wrap: wrap; }
+.fc-counter { font-family: var(--font-mono); font-size: .75rem; color: var(--ink-faint); text-align: center; margin-bottom: .5rem; }
+
+/* ── Shortcuts overlay ── */
+.sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 1.5rem; margin-top: .8rem; }
+.sc-grid kbd { font-family: var(--font-mono); background: var(--paper-deep); border: 1px solid var(--line-strong); border-radius: 4px; padding: .1rem .4rem; font-size: .78rem; }
+.sc-grid div { display: flex; justify-content: space-between; gap: .8rem; font-size: .88rem; }
+
 @media print { .sidebar-toggle, .topic-sidebar, .sticky-command-bar, .solution-toggle-btn, .mark-done-check, .quickfire-btn, .search-row { display: none !important; } .solution-content { display: block !important; } .drill-card { break-inside: avoid; } }
 
 </style>
@@ -1646,8 +1696,106 @@ function clearSearch() {
   qs('.drill-card').forEach(c => c.style.display = '');
 }
 
+/* ── Dark mode ── */
+const DARK = {
+  init() {
+    try {
+      const d = JSON.parse(localStorage.getItem('TXFULL_THEME') || '{}');
+      if (d.dark) this.on();
+    } catch(e) {}
+  },
+  on() { document.documentElement.setAttribute('data-theme', 'dark');
+         const b = $('dark-btn'); if (b) b.textContent = '☀️';
+         localStorage.setItem('TXFULL_THEME', JSON.stringify({dark: true})); },
+  off() { document.documentElement.removeAttribute('data-theme');
+          const b = $('dark-btn'); if (b) b.textContent = '🌙';
+          localStorage.setItem('TXFULL_THEME', JSON.stringify({dark: false})); },
+  toggle() { document.documentElement.getAttribute('data-theme') === 'dark' ? this.off() : this.on(); }
+};
+
+/* ── Flashcards (spaced repetition lite) ── */
+const FLASHCARDS = {
+  deck: [], pos: 0, known: new Set(),
+  build() {
+    const pool = [];
+    qs('.drill-card[data-subtype="mcq"]').forEach(card => {
+      const group = card.querySelector('.options-group');
+      if (!group) return;
+      const name = group.getAttribute('data-name');
+      if (!name || !ANSWERS[name] || ANSWERS[name].length > 1) return;
+      const qtext = card.querySelector('.pdf-text') ? card.querySelector('.pdf-text').textContent.trim() : '';
+      if (qtext.length < 20 || qtext.length > 700) return;
+      const correct = ANSWERS[name];
+      const opts = Array.from(group.querySelectorAll('.option-item')).map(o =>
+        o.textContent.trim().replace(/^[A-F]\)\s*/, ''));
+      pool.push({name, qtext, correct, opts});
+    });
+    const shuffled = pool.slice().sort(() => Math.random() - 0.5).slice(0, 40);
+    this.deck = shuffled;
+    this.pos = 0;
+    try { this.known = new Set(JSON.parse(localStorage.getItem('TXFULL_KNOWN') || '[]')); } catch(e) {}
+  },
+  open() {
+    this.build();
+    const m = $('fc-modal'); if (m) m.classList.add('show');
+    this.render();
+  },
+  close() { const m = $('fc-modal'); if (m) m.classList.remove('show'); },
+  render() {
+    if (this.pos >= this.deck.length) {
+      $('fc-content').innerHTML = '<div style="text-align:center;padding:2rem 0"><div class="qf-score">Deck complete! 🎉</div><p style="color:var(--ink-soft);margin-top:.6rem">You reviewed ' + this.deck.length + ' cards (' + this.known.size + ' known).</p></div>';
+      $('fc-actions').innerHTML = '<button class="quickfire-btn" onclick="FLASHCARDS.open()">🔄 Restart</button><button class="solution-toggle-btn" onclick="FLASHCARDS.close()">✓ Done</button>';
+      return;
+    }
+    const c = this.deck[this.pos];
+    const isKnown = this.known.has(c.name);
+    const optsHtml = c.opts.map(o => '<div class="flashcard-opt">• ' + esc(o) + '</div>').join('');
+    $('fc-counter').textContent = 'Card ' + (this.pos + 1) + ' / ' + this.deck.length + ' · Known: ' + this.known.size;
+    $('fc-content').innerHTML =
+      '<div class="flashcard-wrapper" id="fc-card" onclick="FLASHCARDS.flip()">' +
+      '<div class="flashcard-inner"><div class="flashcard-front">' + esc(c.qtext) + '</div>' +
+      '<div class="flashcard-back"><strong>Answer: ' + esc(c.correct) + '</strong><br>' + optsHtml + '</div></div></div>';
+    $('fc-actions').innerHTML =
+      (isKnown ? '<span style="align-self:center;font-size:.8rem;color:var(--green-bright)">✓ Already known</span>' : '') +
+      '<button class="quickfire-btn" onclick="FLASHCARDS.know()">✓ Got it</button>' +
+      '<button class="solution-toggle-btn" onclick="FLASHCARDS.retry()">🔁 Review again</button>' +
+      '<button class="solution-toggle-btn" onclick="FLASHCARDS.jump()">Open in pack</button>';
+  },
+  flip() { const w = $('fc-card'); if (w) w.classList.toggle('flipped'); },
+  know() {
+    this.known.add(this.deck[this.pos].name);
+    try { localStorage.setItem('TXFULL_KNOWN', JSON.stringify(Array.from(this.known))); } catch(e) {}
+    this.deck.splice(this.pos, 1);
+    this.render();
+  },
+  retry() { const c = this.deck[this.pos]; this.deck.splice(this.pos, 1); this.deck.splice(Math.min(this.pos + 3, this.deck.length), 0, c); this.render(); },
+  jump() { const n = this.deck[this.pos].name; FLASHCARDS.close(); const el = $(n); if (el) { el.scrollIntoView({behavior:'smooth'}); } }
+};
+
+/* ── Keyboard shortcuts ── */
+const KEYS = {
+  open() { const m = $('keys-modal'); if (m) m.classList.add('show'); },
+  close() { const m = $('keys-modal'); if (m) m.classList.remove('show'); }
+};
+
+document.addEventListener('keydown', (e) => {
+  const tag = (e.target.tagName || '').toLowerCase();
+  const typing = tag === 'input' || tag === 'textarea' || e.target.isContentEditable;
+  if ((e.ctrlKey || e.metaKey) && e.key === '/') { e.preventDefault(); KEYS.open(); return; }
+  if (e.key === '?' && !typing) { KEYS.open(); return; }
+  if (e.key === 'Escape') { QUICK_FIRE.close(); EXAM_SIM.close(); FLASHCARDS.close(); KEYS.close(); return; }
+  if (typing) return;
+  const k = e.key.toLowerCase();
+  if (k === 'd') DARK.toggle();
+  else if (k === 'q') QUICK_FIRE.start();
+  else if (k === 'm') EXAM_SIM.start();
+  else if (k === 'f') FLASHCARDS.open();
+  else if (k === '/') { const si = $('search-input'); if (si) { si.focus(); e.preventDefault(); } }
+  else if ((e.ctrlKey || e.metaKey) && k === 'p') { /* allow native print */ }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
-  GAMIFICATION.init(); QUIZ.init();
+  GAMIFICATION.init(); QUIZ.init(); DARK.init();
   qs('.drill-card').forEach(card => {
     const mk = card.querySelector('.mark-done-check input');
     if (mk && GAMIFICATION.completedTasks.has(card.id)) { mk.checked = true; card.classList.add('completed'); }
@@ -1704,6 +1852,9 @@ document.addEventListener('DOMContentLoaded', () => {
     <div style="display:flex;gap:.5rem;align-items:center">
       <button class="quickfire-btn" onclick="QUICK_FIRE.start()">⚡ Quick Fire</button>
       <button class="hud-btn-sm" onclick="EXAM_SIM.start()">⏱ Mock 25</button>
+      <button class="hud-btn-sm" onclick="FLASHCARDS.open()" title="Spaced-repetition flashcards (F)">📇 Cards</button>
+      <button class="hud-btn-sm" onclick="DARK.toggle()" id="dark-btn" title="Toggle dark mode (D)">🌙</button>
+      <button class="hud-btn-sm" onclick="KEYS.open()" title="Keyboard shortcuts (Ctrl+/)">⌨️</button>
       <button class="hud-btn-sm" onclick="window.print()">🖨</button>
     </div>
   </div>
@@ -2697,6 +2848,27 @@ document.addEventListener('DOMContentLoaded', () => {
   <button class="qf-close" onclick="EXAM_SIM.close()">✕</button>
   <h2 style="color:var(--green-deep);margin-bottom:1rem">⏱ Timed Mock — Section A (25 questions)</h2>
   <div id="sim-content"></div>
+</div></div>
+<div class="qf-modal-overlay" id="fc-modal"><div class="qf-modal">
+  <button class="qf-close" onclick="FLASHCARDS.close()">✕</button>
+  <h2 style="color:var(--green-deep);margin-bottom:1rem">📇 Flashcards — spaced repetition</h2>
+  <div class="fc-counter" id="fc-counter"></div>
+  <div id="fc-content"></div>
+  <div class="fc-actions" id="fc-actions"></div>
+</div></div>
+<div class="qf-modal-overlay" id="keys-modal"><div class="qf-modal" style="max-width:520px">
+  <button class="qf-close" onclick="KEYS.close()">✕</button>
+  <h2 style="color:var(--green-deep);margin-bottom:.4rem">⌨️ Keyboard Shortcuts</h2>
+  <div class="sc-grid">
+    <div><kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>?</kbd><span>This help</span></div>
+    <div><kbd>Ctrl</kbd>+<kbd>F</kbd> or <kbd>/</kbd><span>Search questions</span></div>
+    <div><kbd>D</kbd><span>Toggle dark mode</span></div>
+    <div><kbd>Q</kbd><span>Quick Fire quiz</span></div>
+    <div><kbd>M</kbd><span>Timed mock</span></div>
+    <div><kbd>F</kbd><span>Flashcards</span></div>
+    <div><kbd>Esc</kbd><span>Close overlays</span></div>
+    <div><kbd>Ctrl</kbd>+<kbd>P</kbd><span>Print / PDF</span></div>
+  </div>
 </div></div>
 </body>
 

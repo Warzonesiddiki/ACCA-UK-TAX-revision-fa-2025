@@ -22,7 +22,8 @@ official **Kaplan TX-UK Exam Kit (Finance Act 2025, 684 pages)** — for the
   - Type-in numeric answers with smart checking (accepts `£5,510` or `5510`)
 - **Every question has a worked solution** (official computations in ledger style) plus
   - 72 **Examiner's reports** · 216 **Tutor's top tips** · 96 **Key answer tips** · tutorial notes
-- **Study tools**: ⚡ 20-question Quick Fire quiz · ⏱ timed 25-question mock · 🔎 instant search ·
+- **Study tools**: ⚡ 20-question Quick Fire quiz · ⏱ timed 25-question mock · 📇 spaced-repetition flashcards ·
+  🌙 dark mode · ⌨️ keyboard shortcuts (`D`, `Q`, `M`, `F`, `/`, `Ctrl+/`, `Esc`) · 🔎 instant search ·
   📊 progress dashboard · XP / rank gamification · 🖨 print-to-PDF · progress saved in your browser
 - FA2025 **rates & allowances quick-reference** table
 - Fully offline-capable single file (fonts degrade gracefully without internet)
